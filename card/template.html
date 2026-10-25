@@ -294,20 +294,6 @@ function render(p){
   else if(Object.keys(p.findings).length>=2) repHtml = `<div class="empty">수합된 ${Object.keys(p.findings).join('·')}년 지적 간 동일 주제의 반복은 탐지되지 않음(문자 2-gram 유사도 0.28 미만, 공통 핵심어 없음).</div>`;
   else repHtml = `<div class="empty"><b>판정 불가.</b> 저성과 연도 ${lows.length}회 중 지적 원문이 수합된 연도가 ${Object.keys(p.findings).length}개로, 연도 간 대비가 성립하지 않음. ${lows.length>=2?`등급 이력상 ${lows.join('·')}년에 저성과가 반복되어 지적 주제의 동일성 확인이 우선 과제.`:''}</div>`;
 
-  // ---- 확인사항(자동 생성)
-  const checks = [];
-  if(lastLow) checks.push(`${lastLow}년 ${p.grade[lastLow]} 판정 권고사항의 이행 여부와 완료일 확인<span class="ex">${(p.actions[lastLow]||[]).length ? `회신된 이행조치 ${(p.actions[lastLow]||[]).length}건의 완료일이 금년 평가 기준시점 이전인지 대조` : '이행조치 미회신 상태이므로 자체평가보고서의 개선 노력 기술과 증빙으로 확인'}</span>`);
-  if(lows.length>=2) checks.push(`${lows.join('·')}년 저성과 판정 사유의 동일성 검토<span class="ex">동일 주제(성과지표·집행률·만족도 등)가 재지적된 경우 '반복 미개선'으로 기재하고 등급 판정에 반영</span>`);
-  if(lows.some(y=>+y<=2021) && lows.some(y=>+y>=2022)) checks.push(`등급체계 개편(’22년) 전후 비교 시 '미흡'과 '개선필요'를 동일 저성과 등급으로 간주<span class="ex">’19~’21년 미흡 → ’22년 이후 개선필요로 명칭 변경, 저성과 횟수(${lows.length}회)는 양자를 합산</span>`);
-  if(fieldHist.length>1) checks.push(`평가 분야 변경(${fieldHist.join(' → ')})에 따른 비교군 변화 유의<span class="ex">분야 평균 대비 만족도·성과 비교 시 해당 연도 분야 기준 적용</span>`);
-  { const c = fiscalCheck(p); const f26 = (p.fiscal['2026']||[]).filter(r=>r.system==='통합재정사업평가');
-    if(c.diff.length) checks.push(`열린재정 중소기업지원사업평가 결과와 본 등급의 불일치 ${c.diff.length}건 사유 확인<span class="ex">${c.diff.map(d=>`${d.y}년 본 등급 ${esc(d.g)} / 열린재정 ${esc(d.f)}`).join(', ')}. 등급 확정 후 정정 여부 또는 동명 사업 혼입 여부 점검</span>`);
-    if(f26.length) checks.push(`2026년 통합재정사업평가 결과 ‘${esc(f26.map(r=>r.result).join('/'))}’(유형 ${esc(f26.map(r=>r.type).join('/'))})와 금년 평가의 연계<span class="ex">통합평가에서 감액·사업개선으로 분류된 사유가 본 평가 지적사항과 중복되는지 대조</span>`);
-    if(!Object.keys(p.fiscal).length) checks.push(`열린재정 재정사업평가결과 미수록 사유 확인<span class="ex">사업명 변경·통폐합·평가 대상 제외 여부를 소관 부처에 확인</span>`); }
-  { const otherLow = Object.entries(p.fiscal||{}).flatMap(([y,rs])=>rs.filter(r=>r.system!=='중소기업지원사업평가' && r.system!=='통합재정사업평가' && FIS_BAD.has(r.result)).map(r=>`${y}년 ${r.system} ${r.result}${r.src_name!==p.name?`(${r.src_name})`:''}`));
-    if(otherLow.length) checks.push(`타 평가제도의 저성과 판정 이력 확인<span class="ex">${esc(otherLow.join(', '))} → 해당 평가의 지적사항과 금년 지적의 중복 여부 검토</span>`); }
-  if(p.exclude) checks.push(`제외사유 '${esc(p.exclude)}' 적용 여부 확인`);
-
   document.getElementById('card').innerHTML = `
   <header class="head">
     <div><div class="eyebrow">중소기업 지원사업 성과평가 · 계속평가 사업 평가이력카드</div>
@@ -361,14 +347,7 @@ function render(p){
   <section>
     <h2><span class="n">5</span>반복 지적·미개선 사항<span class="hint">본 평가 연도 간 반복 · 타 제도 권고와의 교차</span></h2>
     ${repHtml}
-  </section>
-
-  <section>
-    <h2><span class="n">6</span>평가위원 확인 사항</h2>
-    <ul class="check">${checks.map(c=>`<li><span>${c}</span></li>`).join('')}</ul>
-  </section>
-
-  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·5절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합, 6절 정합성 확인. ④ 중소벤처기업부 회신(’23~’26 성과평가 개선필요·미흡 판정 사업의 판정 이후 조치 내역, ’26.9.28) → 중기부 사업 3·5절 및 ’27 예산안 내역사업 조치. ⑤ 재정지원 일자리사업 평가보고서(${esc(D.jobs_meta?D.jobs_meta.year:'')}년, 사업별 HWP ${esc(D.jobs_meta?D.jobs_meta.count:'')}건) → 열린재정 미공개분의 일자리사업평가 등급(2절)과 종합의견·권고(4절), 5절 교차 지적. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
+  </section>`;
 }
 
 // ---- 사업 선택
