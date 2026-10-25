@@ -270,13 +270,15 @@ function render(p){
 
   // ---- 타 평가제도 평가보고서(일자리사업평가 등)의 종합의견·권고
   const OF = Object.entries(p.other_findings||{}).sort();
+  let otherHtml = '';
   for(const [y,recs] of OF) for(const r of recs){
     const sm = r.summary.map(s=>`<p class="sub">${esc(s)}</p>`).join('');
     const it = r.items.map(f=>`<div class="item"><p class="t">${esc(f.title)}</p>${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`).join('');
     const meta = [r.sub && r.sub!==p.name ? `내역 ${esc(r.sub)}` : '', r.job_type ? esc(r.job_type)+(r.sub_type?'/'+esc(r.sub_type):'') : ''].filter(Boolean).join(' · ');
-    pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> <span class="chip ${fisClass(r.grade)}">${esc(r.grade)}</span> <span>${esc(r.system)} · ${+y-1}년 실적${meta?' · '+meta:''}</span><span class="st"><span class="badge b-na">평가보고서 원문</span></span></div>
+    otherHtml += `<div class="pair"><div class="yr"><span class="mono">${y}</span> <span class="chip ${fisClass(r.grade)}">${esc(r.grade)}</span> <span>${esc(r.system)} · ${+y-1}년 실적${meta?' · '+meta:''}</span><span class="st"><span class="badge b-na">평가보고서 원문</span></span></div>
       <div class="cols"><div><div class="lab">종합의견</div>${sm||'<div class="empty">종합의견 없음</div>'}</div><div><div class="lab">제도개선 권고 · ${r.items.length}건</div>${it||'<div class="empty">권고 없음</div>'}</div></div></div>`;
   }
+  if(!otherHtml) otherHtml = `<div class="empty">타 재정사업평가의 평가보고서 원문이 결합된 연도 없음. 등급만 공개된 제도(열린재정)는 2절 행을 참조.</div>`;
 
   // ---- 반복 지적
   let repHtml;
@@ -346,22 +348,27 @@ function render(p){
   </section>
 
   <section>
-    <h2><span class="n">3</span>전년도 권고 ↔ 금년도 이행실적 대비<span class="hint">저성과 연도별 · 좌: 평가보고서 원문, 우: 부처 회신</span></h2>
+    <h2><span class="n">3</span>전년도 권고 ↔ 금년도 이행실적 대비<span class="hint">중소기업 지원사업 성과평가 · 저성과 연도별 · 좌: 평가보고서 원문, 우: 부처 회신</span></h2>
     ${hasSample?`<div class="banner"><b>예시 데이터 안내.</b> ${esc(p.sample_note||'아래 지적·권고·이행조치 중 예시 표식 항목은 서식 시연용 가상 문안으로, 실제 평가보고서 원문과 부처 회신으로 교체해야 함.')}</div>`:''}
     ${pairs}
   </section>
 
   <section>
-    <h2><span class="n">4</span>반복 지적·미개선 사항</h2>
+    <h2><span class="n">4</span>타 재정사업평가 종합의견·권고<span class="hint">열린재정 미공개 평가보고서 원문 · 본 평가 지적과의 교차 여부는 5절</span></h2>
+    ${otherHtml}
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>반복 지적·미개선 사항<span class="hint">본 평가 연도 간 반복 · 타 제도 권고와의 교차</span></h2>
     ${repHtml}
   </section>
 
   <section>
-    <h2><span class="n">5</span>평가위원 확인 사항</h2>
+    <h2><span class="n">6</span>평가위원 확인 사항</h2>
     <ul class="check">${checks.map(c=>`<li><span>${c}</span></li>`).join('')}</ul>
   </section>
 
-  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·4절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합. ④ 중소벤처기업부 회신(’23~’26 성과평가 개선필요·미흡 판정 사업의 판정 이후 조치 내역, ’26.9.28) → 중기부 사업 3·4절 및 ’27 예산안 내역사업 조치. ⑤ 재정지원 일자리사업 평가보고서(${esc(D.jobs_meta?D.jobs_meta.year:'')}년, 사업별 HWP ${esc(D.jobs_meta?D.jobs_meta.count:'')}건) → 열린재정 미공개분의 일자리사업평가 등급(2절)과 종합의견·권고(3절 '평가보고서 원문' 블록), 4절 교차 지적. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
+  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·5절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합, 6절 정합성 확인. ④ 중소벤처기업부 회신(’23~’26 성과평가 개선필요·미흡 판정 사업의 판정 이후 조치 내역, ’26.9.28) → 중기부 사업 3·5절 및 ’27 예산안 내역사업 조치. ⑤ 재정지원 일자리사업 평가보고서(${esc(D.jobs_meta?D.jobs_meta.year:'')}년, 사업별 HWP ${esc(D.jobs_meta?D.jobs_meta.count:'')}건) → 열린재정 미공개분의 일자리사업평가 등급(2절)과 종합의견·권고(4절), 5절 교차 지적. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
 }
 
 // ---- 사업 선택
