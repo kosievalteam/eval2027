@@ -119,6 +119,90 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "일자리사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "고용유지지원금"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "고용유지지원금"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금"
+     }
+    ],
+    "2024": [
+     {
+      "system": "일자리사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금(-)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금"
+     }
+    ],
+    "2025": [
+     {
+      "system": "일자리사업평가",
+      "result": "양호",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금(-)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "일자리,중소기업",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용유지지원금"
+     }
+    ]
    }
   },
   {
@@ -153,7 +237,20 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "신산업진흥",
+      "src_name": "디자인혁신역량강화(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3612300",
@@ -187,7 +284,75 @@
    "low_count": 3,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "마케팅지원사업"
+     }
+    ]
+   }
   },
   {
    "id": "1530900",
@@ -221,7 +386,42 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화콘텐츠 투자활성화"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화콘텐츠 투자활성화"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화콘텐츠 투자활성화"
+     }
+    ]
+   }
   },
   {
    "id": "1510700",
@@ -255,7 +455,42 @@
    "low_count": 3,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "문화미디어산업육성및지원",
+      "src_name": "방송영상콘텐츠 산업 육성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "문화미디어산업육성및지원",
+      "src_name": "방송영상콘텐츠 산업 육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,일자리,중소기업",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "문화미디어산업육성및지원",
+      "src_name": "방송영상콘텐츠 산업 육성"
+     }
+    ]
+   }
   },
   {
    "id": "3614700",
@@ -289,7 +524,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "산학연협력기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3610700",
@@ -323,7 +571,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인지원(융자)"
+     }
+    ]
+   }
   },
   {
    "id": "1710100",
@@ -389,6 +705,52 @@
        "￭ 지원유형별 세분화된 지원기준, 단계별 증빙 확인 및 사후 실태조사 등 다각도 검증 체계를 통해 입지 제약에 따른 부정수급 위험 철저한 관리 추진중",
        "￭ 사업 목적과의 연계성이 낮은 융자금 회수율 지표를 삭제하여 성과관리 체계를 핵심성과 중심으로 재편, 탄소중립 기여도를 직접 측정하는 실제발전량 지표를 주지표로 유지"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "재생에너지및에너지신산업활성화",
+      "src_name": "신재생에너지금융지원(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "재생에너지및에너지신산업활성화",
+      "src_name": "신재생에너지금융지원(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "재생에너지및에너지신산업활성화",
+      "src_name": "신재생에너지금융지원(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "기후에너지환경부",
+      "account": "전력산업기반기금",
+      "program": "재생에너지및에너지신산업활성화",
+      "src_name": "신재생에너지금융지원(융자)"
      }
     ]
    }
@@ -515,6 +877,41 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "에너지기술개발",
+      "src_name": "신재생에너지핵심기술개발(R&D)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "에너지기술개발",
+      "src_name": "신재생에너지핵심기술개발(R&D)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "전력산업기반기금",
+      "program": "에너지기술개발",
+      "src_name": "신재생에너지핵심기술개발(R&D)"
+     }
+    ]
    }
   },
   {
@@ -549,7 +946,113 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2020": [
+     {
+      "system": "재난안전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2021": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2022": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2023": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2024": [
+     {
+      "system": "재난안전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2025": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "재난안전",
+      "ministry": "고용노동부",
+      "account": "산업재해보상보험및예방기금",
+      "program": "산업재해예방",
+      "src_name": "유해작업환경개선"
+     }
+    ]
+   }
   },
   {
    "id": "3611900",
@@ -583,7 +1086,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업 재기지원"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업재기지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업 재기지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업 재기지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업 재기지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업,일자리,보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "중소기업 재기지원"
+     }
+    ]
+   }
   },
   {
    "id": "3611100",
@@ -617,7 +1188,64 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "지역신용보증재단재보증"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "지역신용보증재단재보증"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "지역신용보증재단재보증"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "지역신용보증재단재보증"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "지역신용보증재단재보증"
+     }
+    ]
+   }
   },
   {
    "id": "1732400",
@@ -651,7 +1279,100 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성(R&D)"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "지역균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "정상추진",
+      "type": "지역균형",
+      "ministry": "중소벤처기업부",
+      "account": "지역균형발전특별회계",
+      "program": "지역중소기업육성",
+      "src_name": "지역특화산업육성"
+     }
+    ]
+   }
   },
   {
    "id": "0832600",
@@ -685,7 +1406,8 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {}
   },
   {
    "id": "1739000",
@@ -719,7 +1441,8 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {}
   },
   {
    "id": "1732700",
@@ -753,7 +1476,75 @@
    "low_count": 3,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업",
+      "ministry": "산업통상부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "해외플랜트진출확대"
+     }
+    ]
+   }
   },
   {
    "id": "1511300",
@@ -787,7 +1578,64 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "관광산업 활성화",
+      "src_name": "관광사업 창업 지원 및 벤처 육성"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "관광산업 활성화",
+      "src_name": "관광사업 창업 지원 및 벤처 육성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "관광산업 활성화",
+      "src_name": "관광사업 창업 지원 및 벤처 육성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "관광산업 활성화",
+      "src_name": "관광사업 창업 지원 및 벤처 육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,중소기업",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "관광산업 활성화",
+      "src_name": "관광사업 창업 지원 및 벤처 육성"
+     }
+    ]
+   }
   },
   {
    "id": "3614200",
@@ -821,7 +1669,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "글로벌중소기업육성프로젝트지원(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "2030700",
@@ -855,7 +1716,62 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "직업능력개발",
+      "src_name": "사업주직업훈련지원금"
+     }
+    ],
+    "2024": [
+     {
+      "system": "일자리사업평가",
+      "result": "양호",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "직업능력개발",
+      "src_name": "사업주직업훈련지원금(-　)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "일자리사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "직업능력개발",
+      "src_name": "사업주직업훈련지원금(-)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "직업능력개발",
+      "src_name": "사업주직업훈련지원금"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,일자리",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "직업능력개발",
+      "src_name": "사업주직업훈련지원금"
+     }
+    ]
+   }
   },
   {
    "id": "1737700",
@@ -889,7 +1805,20 @@
    "low_count": 3,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "주력산업진흥",
+      "src_name": "소재부품산업전문기술개발사업(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "2310200",
@@ -997,6 +1926,63 @@
       "detail": []
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "해양수산부",
+      "account": "수산발전기금",
+      "program": "수산물 유통 및 안전관리",
+      "src_name": "수산물수매지원(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "해양수산부",
+      "account": "수산발전기금",
+      "program": "수산물 유통 및 안전관리",
+      "src_name": "수산물수매지원(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "해양수산부",
+      "account": "수산발전기금",
+      "program": "수산물 유통 및 안전관리",
+      "src_name": "수산물수매지원(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "해양수산부",
+      "account": "수산발전기금",
+      "program": "수산물 유통 및 안전관리",
+      "src_name": "수산물수매지원(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업",
+      "ministry": "해양수산부",
+      "account": "수산발전기금",
+      "program": "수산물 유통 및 안전관리",
+      "src_name": "수산물수매지원(융자)"
+     }
+    ]
    }
   },
   {
@@ -1031,7 +2017,8 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {}
   },
   {
    "id": "0510100",
@@ -1065,7 +2052,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업성장안정지원",
+      "src_name": "신용보증기금출연"
+     }
+    ]
+   }
   },
   {
    "id": "0810100",
@@ -1099,7 +2154,31 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "정보통신진흥기금",
+      "program": "정보통신융합산업",
+      "src_name": "정보통신응용기술개발지원(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "정보통신진흥기금",
+      "program": "정보통신융합산업",
+      "src_name": "정보통신응용기술개발지원(융자)"
+     }
+    ]
+   }
   },
   {
    "id": "3611500",
@@ -1133,7 +2212,42 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업정보화역량강화(정보화)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업정보화역량강화(정보화)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업정보화역량강화(정보화)"
+     }
+    ]
+   }
   },
   {
    "id": "3611600",
@@ -1167,7 +2281,64 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "중소기업혁신바우처지원사업"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "중소기업 혁신바우처 지원사업"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "중소기업 혁신바우처 지원사업"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "중소기업 혁신바우처 지원사업"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업,보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업육성지원",
+      "src_name": "중소기업 혁신바우처 지원사업"
+     }
+    ]
+   }
   },
   {
    "id": "3638500",
@@ -1201,7 +2372,42 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업생태계기반구축"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업생태계기반구축"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업생태계기반구축"
+     }
+    ]
+   }
   },
   {
    "id": "2231000",
@@ -1235,7 +2441,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "-",
+      "ministry": "국토교통부",
+      "account": "일반회계",
+      "program": "건설정책 및 기술지원",
+      "src_name": "해외인프라시장개척"
+     }
+    ]
+   }
   },
   {
    "id": "1510400",
@@ -1269,7 +2488,64 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "국내관광활성화",
+      "src_name": "관광산업 융자지원(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "국내관광활성화",
+      "src_name": "관광산업 융자지원(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "국내관광활성화",
+      "src_name": "관광산업 융자지원(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "국내관광활성화",
+      "src_name": "관광산업 융자지원(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업,보조사업",
+      "ministry": "문화체육관광부",
+      "account": "관광진흥개발기금",
+      "program": "국내관광활성화",
+      "src_name": "관광산업 융자지원(융자)"
+     }
+    ]
+   }
   },
   {
    "id": "3640300",
@@ -1303,7 +2579,42 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "동반성장지원",
+      "src_name": "대중소기업동반성장생태계구축"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "동반성장지원",
+      "src_name": "대중소기업동반성장생태계구축"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "동반성장지원",
+      "src_name": "대중소기업동반성장생태계구축"
+     }
+    ]
+   }
   },
   {
    "id": "1910200",
@@ -1337,7 +2648,40 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2020": [
+     {
+      "system": "재난안전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "대기개선 추진대책"
+     }
+    ],
+    "2021": [
+     {
+      "system": "재난안전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "대기개선추진대책"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "대기개선 추진대책"
+     }
+    ]
+   }
   },
   {
    "id": "1712700",
@@ -1371,7 +2715,53 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "무역보험기금출연"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "무역보험기금출연"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "무역보험기금출연"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "산업통상부",
+      "account": "일반회계",
+      "program": "무역진흥",
+      "src_name": "무역보험기금출연"
+     }
+    ]
+   }
   },
   {
    "id": "1530700",
@@ -1405,7 +2795,42 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화기술 연구개발(R&D)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화기술연구개발(R&D)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화기술 연구개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "1510600",
@@ -1439,7 +2864,31 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "문화콘텐츠 국제협력 및 수출기반 조성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "국제문화홍보",
+      "src_name": "문화콘텐츠 국제협력 및 수출기반 조성"
+     }
+    ]
+   }
   },
   {
    "id": "1737600",
@@ -1473,7 +2922,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "산업경쟁력기반구축",
+      "src_name": "소재부품산업미래성장동력(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3613700",
@@ -1507,7 +2969,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업성장안정지원",
+      "src_name": "신시장진출지원자금(융자)"
+     }
+    ]
+   }
   },
   {
    "id": "3631600",
@@ -1541,7 +3071,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업인력지원",
+      "src_name": "인력유입인프라조성"
+     }
+    ]
+   }
   },
   {
    "id": "2010600",
@@ -1575,7 +3173,40 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "일자리사업평가",
+      "result": "등급",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용평등증진",
+      "src_name": "일터혁신 지원"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용평등증진",
+      "src_name": "일터혁신 지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용평등증진",
+      "src_name": "일터혁신 지원"
+     }
+    ]
+   }
   },
   {
    "id": "1631800",
@@ -1609,7 +3240,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "농업신산업육성",
+      "src_name": "첨단생산기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3640200",
@@ -1643,7 +3287,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "현장수요형 스마트공장 기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3631000",
@@ -1677,7 +3334,75 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "기술혁신기반조성"
+     }
+    ]
+   }
   },
   {
    "id": "3638900",
@@ -1711,7 +3436,84 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "일자리사업평가",
+      "result": "감액",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터활용취업지원"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "일자리사업평가",
+      "result": "양호",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원(-)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업,일자리,보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "기업인력애로센터 활용 취업 지원"
+     }
+    ]
+   }
   },
   {
    "id": "1743100",
@@ -1745,7 +3547,20 @@
    "low_count": 1,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "주력산업진흥",
+      "src_name": "드론활용서비스시장창출지원(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3510600",
@@ -1779,7 +3594,31 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산림청",
+      "account": "농어촌구조개선특별회계",
+      "program": "산림자원 및 산업육성",
+      "src_name": "목재 자원의 고부가가치 첨단화 기술개발(R&D)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산림청",
+      "account": "농어촌구조개선특별회계",
+      "program": "산림자원 및 산업육성",
+      "src_name": "목재 자원의 고부가가치 첨단화 기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3642900",
@@ -1813,7 +3652,42 @@
    "low_count": 3,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "비대면 서비스 플랫폼 구축"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "비대면 서비스 플랫폼 구축"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "비대면 서비스 플랫폼 구축"
+     }
+    ]
+   }
   },
   {
    "id": "2030900",
@@ -1847,7 +3721,64 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "일반회계",
+      "program": "고용창출및훈련",
+      "src_name": "사회적기업진흥원운영지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "일반회계",
+      "program": "고용창출",
+      "src_name": "사회적기업진흥원운영지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "일반회계",
+      "program": "고용창출",
+      "src_name": "사회적기업진흥원운영지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "일반회계",
+      "program": "고용창출",
+      "src_name": "사회적기업 지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "고용노동부",
+      "account": "일반회계",
+      "program": "고용창출",
+      "src_name": "사회적기업 지원"
+     }
+    ]
+   }
   },
   {
    "id": "1710700",
@@ -1881,7 +3812,53 @@
    "low_count": 1,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "산업경쟁력기반구축",
+      "src_name": "산업기술국제협력(R&D)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "산업기술표준및제품안전관리",
+      "src_name": "산업기술국제협력(R&D)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "산업경쟁력기반구축",
+      "src_name": "산업기술국제협력(R&D)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "산업경쟁력기반구축",
+      "src_name": "산업기술국제협력(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3642600",
@@ -1915,7 +3892,53 @@
    "low_count": 2,
    "exclude": "전년도우수",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인 스마트화 지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인스마트화지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인스마트화지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인스마트화지원"
+     }
+    ]
+   }
   },
   {
    "id": "3612000",
@@ -1949,7 +3972,75 @@
    "low_count": 3,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "일자리,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업인력지원",
+      "src_name": "연수사업"
+     }
+    ]
+   }
   },
   {
    "id": "1371000",
@@ -2012,6 +4103,74 @@
    },
    "actions": {
     "2024": []
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업 육성"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업육성"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업 육성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업 육성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업 육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업,보조사업",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "영상콘텐츠산업 육성"
+     }
+    ]
    }
   },
   {
@@ -2046,7 +4205,51 @@
    "low_count": 1,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업상용화기술개발(R&D)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업상용화기술개발(R&D)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업상용화기술개발(R&D)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소재부품장비경쟁력강화특별회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업상용화기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "3611800",
@@ -2080,7 +4283,75 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업수출촉진지원",
+      "src_name": "중소기업해외시장진출"
+     }
+    ]
+   }
   },
   {
    "id": "3613800",
@@ -2114,7 +4385,73 @@
    "low_count": 1,
    "exclude": "종료예정",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "미흡",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "국가균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "지역균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "지역균형,일자리,보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "지역균형발전특별회계",
+      "program": "창업환경조성",
+      "src_name": "창업인프라지원"
+     }
+    ]
+   }
   },
   {
    "id": "3630700",
@@ -2148,7 +4485,53 @@
    "low_count": 1,
    "exclude": "부처의견",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업저변확대"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업저변확대"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업저변확대"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "창업환경조성",
+      "src_name": "창업저변확대"
+     }
+    ]
+   }
   },
   {
    "id": "3610600",
@@ -2182,7 +4565,75 @@
    "low_count": 1,
    "exclude": "지원이력부족",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인창업지원"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인창업지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인창업지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인창업지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "기업가형 소상공인 육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "기업가형 소상공인 육성"
+     }
+    ]
+   }
   },
   {
    "id": "1631300",
@@ -2266,6 +4717,61 @@
    "actions": {
     "2023": [],
     "2024": []
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "식품외식산업육성",
+      "src_name": "농식품 해외시장 진출"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "식품외식산업육성",
+      "src_name": "농식품 해외시장 진출"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "식품외식산업육성",
+      "src_name": "농식품 해외시장 진출"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "식품외식산업육성",
+      "src_name": "농식품 해외시장 진출"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업,보조사업",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "식품외식산업육성",
+      "src_name": "농식품 해외시장 진출"
+     }
+    ]
    }
   },
   {
@@ -2345,6 +4851,19 @@
       "detail": [
        "기존 특허 등급지수 중심의 성과지표 외에 사업화, 기술이전, 정책활용을 지표로 추가하여 사업 추진 완료"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "대기환경관리기술 사업화 연계 기술개발사업(R&D)"
      }
     ]
    }
@@ -2430,6 +4949,72 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "국가균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력활성화지원(R&D)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "국가균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력 활성화 지원(R&D)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "국가균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력 활성화 지원(R&D)"
+     },
+     {
+      "system": "국가균형발전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "국가균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력 활성화 지원(R&D)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "지역균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력 활성화 지원(R&D)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "국가균형발전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "지역균형발전특별회계",
+      "program": "공공연구성과활성화",
+      "src_name": "산학연협력 활성화 지원(R&D)"
+     }
+    ]
    }
   },
   {
@@ -2487,6 +5072,19 @@
    },
    "actions": {
     "2023": []
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 혁신기반 조성(R&D)"
+     }
+    ]
    }
   },
   {
@@ -2570,6 +5168,19 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "에너지및자원사업특별회계",
+      "program": "에너지기술개발",
+      "src_name": "에너지수요관리핵심기술개발(R&D)"
+     }
+    ]
    }
   },
   {
@@ -2604,7 +5215,53 @@
    "low_count": 3,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업수출촉진지원",
+      "src_name": "온라인수출플랫폼(정보화)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업수출촉진지원",
+      "src_name": "온라인수출플랫폼(정보화)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업수출촉진지원",
+      "src_name": "온라인수출플랫폼(정보화)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "중소기업수출촉진지원",
+      "src_name": "온라인수출플랫폼(정보화)"
+     }
+    ]
+   }
   },
   {
    "id": "0834400",
@@ -2683,6 +5340,85 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2020": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2021": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2022": [
+     {
+      "system": "재난안전사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "과학기술정보통신부",
+      "account": "일반회계",
+      "program": "국가사회정보화",
+      "src_name": "정보통신 기반보호 강화(정보화)"
+     }
+    ]
    }
   },
   {
@@ -2740,6 +5476,41 @@
    },
    "actions": {
     "2023": []
+   },
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "지역콘텐츠산업균형발전지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "지역콘텐츠산업 균형발전 지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,지역균형",
+      "ministry": "문화체육관광부",
+      "account": "지역균형발전특별회계",
+      "program": "콘텐츠산업 육성",
+      "src_name": "지역콘텐츠산업 균형발전 지원"
+     }
+    ]
    }
   },
   {
@@ -2803,6 +5574,19 @@
    },
    "actions": {
     "2023": []
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "금융위원회",
+      "account": "일반회계",
+      "program": "산업금융지원",
+      "src_name": "코넥스시장 활성화 지원"
+     }
+    ]
    }
   },
   {
@@ -2897,6 +5681,74 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ],
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,중소기업",
+      "ministry": "산업통상부",
+      "account": "일반회계",
+      "program": "통상협력지원",
+      "src_name": "통상협정국내대책추진지원"
+     }
+    ]
    }
   },
   {
@@ -2931,7 +5783,20 @@
    "low_count": 1,
    "exclude": "부처의견",
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "해외원천기술 상용화 기술개발(R&D)"
+     }
+    ]
+   }
   },
   {
    "id": "0510700",
@@ -2965,7 +5830,53 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "기술보증기금",
+      "program": "기술금융지원",
+      "src_name": "기술·경영 지도"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "기술보증기금",
+      "program": "기술금융지원",
+      "src_name": "기술·경영 지도"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "기술보증기금",
+      "program": "기술금융지원",
+      "src_name": "기술·경영 지도"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "기술보증기금",
+      "program": "기술금융지원",
+      "src_name": "기술·경영 지도"
+     }
+    ]
+   }
   },
   {
    "id": "1913800",
@@ -3042,6 +5953,70 @@
       "detail": [
        "지원기업 간담회 개최(’25.11.)로 기업 의견수렴 및 만족도 조사 실시(평균 90점 달성) 등 참여기업의 만족도 제고 노력"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "중소환경기업 사업화 지원사업"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "중소환경기업 사업화 지원사업"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "녹색혁신기업 성장지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "중소환경기업 사업화 지원사업"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "녹색혁신기업 성장지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,중소기업,일자리",
+      "ministry": "기후에너지환경부",
+      "account": "환경개선특별회계",
+      "program": "친환경경제사회 활성화",
+      "src_name": "중소환경기업 사업화 지원사업"
      }
     ]
    }
@@ -3137,6 +6112,41 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "신산업진흥",
+      "src_name": "바이오산업기술개발(R&D)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "신산업진흥",
+      "src_name": "바이오산업기술개발(R&D)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "신산업진흥",
+      "src_name": "바이오산업기술개발(R&D)"
+     }
+    ]
    }
   },
   {
@@ -3222,6 +6232,19 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "전파활용방송서비스산업",
+      "src_name": "방송장비산업인프라구축(정보화)"
+     }
+    ]
    }
   },
   {
@@ -3256,7 +6279,64 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "벤처기업경쟁력강화"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "벤처기업경쟁력강화"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "벤처기업경쟁력강화"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "벤처기업경쟁력강화"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,일자리,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "벤처기업활성화지원",
+      "src_name": "벤처기업경쟁력강화"
+     }
+    ]
+   }
   },
   {
    "id": "1913200",
@@ -3320,6 +6400,72 @@
        "￭ 악취관련 내역사업(3개)를 제외한 하위내역사업의 목적까지 고려하여 성과관리 추진",
        "￭ 사전에 유증기 회수설비 기술지원 요청내용 확인 등을 통해 만족도 향상 노력"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2022": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변 미세먼지 관리사업"
+     }
+    ],
+    "2023": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변미세먼지관리사업"
+     }
+    ],
+    "2024": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변 미세먼지 관리사업"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변 미세먼지 관리사업"
+     }
+    ],
+    "2025": [
+     {
+      "system": "재난안전사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변 미세먼지 관리사업"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "재난안전",
+      "ministry": "기후에너지환경부",
+      "account": "환경개선특별회계",
+      "program": "대기환경 보전",
+      "src_name": "생활주변 미세먼지 관리사업"
      }
     ]
    }
@@ -3418,6 +6564,72 @@
    "actions": {
     "2024": [],
     "2025": []
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원(융자)"
+     },
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "국민체육진흥기금",
+      "program": "스포츠산업 육성",
+      "src_name": "스포츠산업 금융지원"
+     }
+    ]
    }
   },
   {
@@ -3481,6 +6693,52 @@
    },
    "actions": {
     "2024": []
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "창의적문화정책구현",
+      "src_name": "전통문화 창업 및 융합 활성화"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "창의적문화정책구현",
+      "src_name": "전통문화 창업 및 융합 활성화"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "창의적문화정책구현",
+      "src_name": "전통문화 창업 및 융합 활성화"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,일자리",
+      "ministry": "문화체육관광부",
+      "account": "일반회계",
+      "program": "창의적문화정책구현",
+      "src_name": "전통문화 창업 및 융합 활성화"
+     }
+    ]
    }
   },
   {
@@ -3515,7 +6773,64 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2022": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업스마트서비스지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업 스마트 서비스 지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업 스마트 서비스 지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업 스마트 서비스 지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "일반회계",
+      "program": "중소기업기술개발지원",
+      "src_name": "중소기업 스마트 서비스 지원"
+     }
+    ]
+   }
   },
   {
    "id": "2033300",
@@ -3582,6 +6897,50 @@
       "action": "’24년부터 신규가입 중단하여 개선 실익 없음(’24.1월)",
       "done": "’24.1월",
       "detail": []
+     }
+    ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "일자리사업평가",
+      "result": "양호",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "청년내일채움공제(고보)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "청년내일채움공제(고보)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "청년내일채움공제(고보)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "청년내일채움공제(고보)"
      }
     ]
    }
@@ -3655,6 +7014,19 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "해양수산부",
+      "account": "일반회계",
+      "program": "해양산업육성및영토관리",
+      "src_name": "해양수산 신산업 기술사업화 지원(R&D)"
+     }
+    ]
    }
   },
   {
@@ -3722,6 +7094,63 @@
        "지역맞춤형 취업지원프로그램 실효성 제고를 위해 전국(49개 지방관서) 확대 시행",
        "(‘24) 5개소 → (‘25) 16개소 → (‘26) 전국 49개소"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "고용창출장려금"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용창출장려금"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용창출장려금"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용창출장려금"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업,일자리",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "고용창출장려금"
      }
     ]
    }
@@ -3814,6 +7243,30 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "정보통신진흥기금",
+      "program": "정보통신융합산업",
+      "src_name": "글로벌ICT혁신클러스터조성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "정보통신진흥기금",
+      "program": "정보통신융합산업",
+      "src_name": "글로벌ICT혁신클러스터조성"
+     }
+    ]
    }
   },
   {
@@ -3893,6 +7346,63 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "디지털콘텐츠기업경쟁력강화"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "디지털콘텐츠기업경쟁력강화"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "디지털콘텐츠기업경쟁력강화"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "디지털콘텐츠기업경쟁력강화"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "디지털콘텐츠기업경쟁력강화"
+     }
+    ]
    }
   },
   {
@@ -3927,7 +7437,31 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "벤처기업활성화지원",
+      "src_name": "레저장비산업개발지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "벤처기업활성화지원",
+      "src_name": "레저장비산업개발지원"
+     }
+    ]
+   }
   },
   {
    "id": "1732600",
@@ -4025,6 +7559,30 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "산업기술진흥및사업화촉진기금",
+      "program": "주력산업진흥",
+      "src_name": "몬트리올의정서대응"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업,보조사업",
+      "ministry": "산업통상부",
+      "account": "산업기술진흥및사업화촉진기금",
+      "program": "주력산업진흥",
+      "src_name": "몬트리올의정서대응"
+     }
+    ]
    }
   },
   {
@@ -4114,6 +7672,41 @@
       "detail": []
      }
     ]
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "주력산업진흥",
+      "src_name": "생활산업경쟁력강화"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "주력산업진흥",
+      "src_name": "생활산업경쟁력강화"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "산업통상부",
+      "account": "지역균형발전특별회계",
+      "program": "주력산업진흥",
+      "src_name": "생활산업경쟁력강화"
+     }
+    ]
    }
   },
   {
@@ -4148,7 +7741,64 @@
    "low_count": 2,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인재기지원"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인재기지원"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인재기지원"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인재기지원"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,일자리,중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "소상공인시장진흥기금",
+      "program": "소상공인·전통시장지원",
+      "src_name": "소상공인재기지원"
+     }
+    ]
+   }
   },
   {
    "id": "1610400",
@@ -4217,6 +7867,72 @@
    },
    "actions": {
     "2025": []
+   },
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "농림축산식품부",
+      "account": "농산물가격안정기금",
+      "program": "식품외식산업육성",
+      "src_name": "식품외식종합자금(융자)"
+     }
+    ]
    }
   },
   {
@@ -4292,6 +8008,52 @@
        "할당대상업체 탄소중립설비 지원사업 가이드라인 제작·배포 및 입찰계약 체크리스트 안내 등 사업자 애로사항 지원으로 만족도 개선 노력",
        "(’24) 89.9점 → (’25) 91.5점"
       ]
+     }
+    ]
+   },
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "에너지및자원사업특별회계",
+      "program": "기후변화대응",
+      "src_name": "온실가스관리인프라구축"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "기획재정부",
+      "account": "기후대응기금",
+      "program": "온실가스감축",
+      "src_name": "온실가스관리인프라구축"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "기획재정부",
+      "account": "기후대응기금",
+      "program": "온실가스감축",
+      "src_name": "온실가스관리인프라구축"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업",
+      "ministry": "기후에너지환경부",
+      "account": "기후대응기금",
+      "program": "탄소중립기반구축",
+      "src_name": "온실가스관리인프라구축"
      }
     ]
    }
@@ -4407,6 +8169,30 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "산림청",
+      "account": "농어촌구조개선특별회계",
+      "program": "국제산림협력",
+      "src_name": "임산물수출촉진"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,중소기업",
+      "ministry": "산림청",
+      "account": "농어촌구조개선특별회계",
+      "program": "국제산림협력",
+      "src_name": "임산물수출촉진"
+     }
+    ]
    }
   },
   {
@@ -4485,6 +8271,19 @@
       ]
      }
     ]
+   },
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "환경부",
+      "account": "환경개선특별회계",
+      "program": "자원순환사회 형성 촉진",
+      "src_name": "자원순환촉진지원"
+     }
+    ]
    }
   },
   {
@@ -4519,7 +8318,42 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "창업환경조성",
+      "src_name": "재도약촉진"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "창업환경조성",
+      "src_name": "재도약촉진"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "중소벤처기업부",
+      "account": "중소벤처기업창업및진흥기금",
+      "program": "창업환경조성",
+      "src_name": "재도약촉진"
+     }
+    ]
+   }
   },
   {
    "id": "0811000",
@@ -4553,7 +8387,53 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "ICT 창의기업 육성"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "ICT 창의기업 육성"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "ICT 창의기업 육성"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "일자리,중소기업",
+      "ministry": "과학기술정보통신부",
+      "account": "방송통신발전기금",
+      "program": "콘텐츠방송산업육성",
+      "src_name": "ICT 창의기업 육성"
+     }
+    ]
+   }
   },
   {
    "id": "0845400",
@@ -4587,7 +8467,8 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {}
   },
   {
    "id": "1571100",
@@ -4621,7 +8502,53 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "아시아문화중심도시조성특별회계",
+      "program": "아시아문화중심도시조성",
+      "src_name": "문화중심도시육성(지자체)"
+     }
+    ],
+    "2024": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "아시아문화중심도시조성특별회계",
+      "program": "아시아문화중심도시조성",
+      "src_name": "문화중심도시육성(지자체)"
+     }
+    ],
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "문화체육관광부",
+      "account": "아시아문화중심도시조성특별회계",
+      "program": "아시아문화중심도시조성",
+      "src_name": "문화중심도시육성(지자체)"
+     }
+    ],
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "중소기업,보조사업",
+      "ministry": "문화체육관광부",
+      "account": "아시아문화중심도시조성특별회계",
+      "program": "아시아문화중심도시조성",
+      "src_name": "문화중심도시육성(지자체)"
+     }
+    ]
+   }
   },
   {
    "id": "1636400",
@@ -4655,7 +8582,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,중소기업",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "축산업진흥 및 동물복지향상",
+      "src_name": "반려동물연관산업해외수출산업화"
+     }
+    ]
+   }
   },
   {
    "id": "2232400",
@@ -4689,7 +8629,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "중소기업",
+      "ministry": "국토교통부",
+      "account": "일반회계",
+      "program": "도시정책",
+      "src_name": "스마트시티확산사업"
+     }
+    ]
+   }
   },
   {
    "id": "1753300",
@@ -4723,7 +8676,8 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {}
   },
   {
    "id": "1634200",
@@ -4757,7 +8711,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "감액",
+      "type": "보조사업,중소기업",
+      "ministry": "농림축산식품부",
+      "account": "농어촌구조개선특별회계",
+      "program": "종자관리",
+      "src_name": "종자산업활성화지원"
+     }
+    ]
+   }
   },
   {
    "id": "1757400",
@@ -4791,7 +8758,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2025": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "산업통상자원부",
+      "account": "일반회계",
+      "program": "신산업진흥",
+      "src_name": "지식서비스기반구축"
+     }
+    ]
+   }
   },
   {
    "id": "2033400",
@@ -4825,7 +8805,62 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2021": [
+     {
+      "system": "일자리사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출및훈련",
+      "src_name": "지역고용촉진지원금"
+     }
+    ],
+    "2023": [
+     {
+      "system": "중소기업지원사업평가",
+      "result": "보통",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "지역고용촉진지원금"
+     }
+    ],
+    "2024": [
+     {
+      "system": "일자리사업평가",
+      "result": "양호",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "지역고용촉진지원금(　-)"
+     },
+     {
+      "system": "중소기업지원사업평가",
+      "result": "우수",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "지역고용촉진지원금"
+     }
+    ],
+    "2025": [
+     {
+      "system": "일자리사업평가",
+      "result": "개선",
+      "type": "-",
+      "ministry": "고용노동부",
+      "account": "고용보험기금",
+      "program": "고용창출",
+      "src_name": "지역고용촉진지원금(-)"
+     }
+    ]
+   }
   },
   {
    "id": "2393800",
@@ -4859,7 +8894,20 @@
    "low_count": 1,
    "exclude": null,
    "findings": {},
-   "actions": {}
+   "actions": {},
+   "fiscal": {
+    "2026": [
+     {
+      "system": "통합재정사업평가",
+      "result": "사업개선",
+      "type": "보조사업,중소기업",
+      "ministry": "해양수산부",
+      "account": "일반회계",
+      "program": "해양 및 해상교통관리",
+      "src_name": "친환경선박 보급 촉진"
+     }
+    ]
+   }
   }
  ],
  "hwp_findings": [
@@ -6730,5 +10778,21 @@
    ],
    "matched": "1711900"
   }
- ]
+ ],
+ "fiscal_meta": {
+  "source": "https://www.openfiscaldata.go.kr/op/ko/br/UOPKOBRA03",
+  "endpoint": "https://www.openfiscaldata.go.kr/op/ko/br/selectPgrvRsltList.do",
+  "fetched_at": "2026-10-25",
+  "years": [
+   "2019",
+   "2020",
+   "2021",
+   "2022",
+   "2023",
+   "2024",
+   "2025",
+   "2026"
+  ]
+ },
+ "fiscal_rows": 7086
 }

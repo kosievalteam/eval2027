@@ -1,11 +1,15 @@
-"""grade.xlsx + tables.json(hwp) -> data/history.json  Usage: python3 -I build_dataset.py grade.xlsx tables.json out.json"""
+"""grade.xlsx + tables.json(hwp) [+ openfiscal_results.json] -> data/history.json
+Usage: python3 -I build_dataset.py grade.xlsx tables.json out.json [openfiscal_results.json]"""
 import sys, json, re, openpyxl
 xlsx, tjson, out = sys.argv[1:4]
+fiscal_path = sys.argv[4] if len(sys.argv) > 4 else None
 YEARS=list(range(2019,2027))
 ALIAS={'통상협정국내내책추진지원':'통상협정국내대책추진지원'}
 def norm(s):
-    s=ALIAS.get((s or '').strip(),s)
-    return re.sub(r'[\s\(\)（）·ㆍ_\-]','',s or '').replace('기금','').replace('R&D','').replace('일반','').replace('정보화','').replace('융자','')
+    s=ALIAS.get((s or '').strip(),s or '')
+    s=re.sub(r'\((중기부|산업부|고용부)\)','',s)
+    s=re.sub(r'[\s\(\)（）·ㆍ_\-]','',s).replace('R&D','').replace('일반','').replace('정보화','').replace('융자','').replace('기금','')
+    return re.sub(r'(지원|개발|구축|강화|육성|조성|촉진|활성화|진출|운영|관리)사업$',r'\1',s)
 
 # ---- grades
 wb=openpyxl.load_workbook(xlsx,data_only=True); ws=wb.worksheets[0]
@@ -20,7 +24,7 @@ for r in ws.iter_rows(min_row=2):
       'field':{str(y):v.get(f'{y%100}년분야') for y in YEARS},
       'grade':{str(y):v.get(f'{y%100}년 등급') for y in YEARS},
       'first_low':v['첫미흡연도'], 'low_count':v['미흡횟수'], 'exclude':v.get('제외사유'),
-      'findings':{}, 'actions':{}
+      'findings':{}, 'actions':{}, 'fiscal':{}
     })
 
 # ---- hwp tables -> grid with rowspan fill
@@ -79,7 +83,33 @@ def attach(lst,key):
         else: un.append(rec['name']); rec['matched']=None
     return un
 u1=attach(findings,'findings'); u2=attach(actions,'actions')
-json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
+
+# ---- 열린재정 재정사업평가결과 결합: 세부사업명(정규화) 일치, 복수 후보면 소관명 일치 우선
+MINI_ALIAS={'산업통상자원부':['산업통상자원부','기후에너지환경부','산업통상부'],'중소벤처기업부':['중소벤처기업부'],'환경부':['환경부','기후에너지환경부']}
+def mnorm(m): return re.sub(r'\s*\(.*?\)\s*','',m or '').strip()
+fiscal_stats={'rows':0,'matched_rows':0,'programs_with_fiscal':0}
+if fiscal_path:
+    F=json.load(open(fiscal_path,encoding='utf-8'))
+    by_name={}
+    for p in progs: by_name.setdefault(norm(p['name']),[]).append(p)
+    # 과거명 병기 사업명 "현재명_(과거)과거명" 도 색인
+    for p in progs:
+        m=re.match(r'(.+?)_\(과거\)(.+)',p['name'])
+        if m:
+            for part in m.groups(): by_name.setdefault(norm(part),[]).append(p)
+    for r in F['rows']:
+        fiscal_stats['rows']+=1
+        cands=by_name.get(norm(r['name'])) or []
+        if len(cands)>1:
+            same=[p for p in cands if mnorm(r['ministry']) in MINI_ALIAS.get(mnorm(p['ministry']),[mnorm(p['ministry'])])]
+            cands=same or cands
+        if not cands: continue
+        p=cands[0]
+        rec={'system':r['system'],'result':r['result'],'type':r['type'],'ministry':r['ministry'],'account':r['account'],'program':r['program'],'src_name':r['name']}
+        p['fiscal'].setdefault(r['year'],[]).append(rec); fiscal_stats['matched_rows']+=1
+    fiscal_stats['programs_with_fiscal']=sum(1 for p in progs if p['fiscal'])
+    print('fiscal:',fiscal_stats)
+json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions,'fiscal_meta':(json.load(open(fiscal_path,encoding='utf-8'))['meta'] if fiscal_path else None),'fiscal_rows':fiscal_stats['rows']},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
 print('programs',len(progs),'findings rows',len(findings),'actions rows',len(actions))
 print('unmatched findings:',u1); print('unmatched actions:',u2)
 both=[p for p in progs if p['findings'] and p['actions']]
