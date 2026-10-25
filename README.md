@@ -21,7 +21,8 @@
 
 | 경로 | 내용 |
 |---|---|
-| `card/eval_history_card.html` | 완성 카드(데이터 내장, 단일 파일). 상단 선택 상자로 99개 사업 전환, `#p<세부사업ID>`로 직접 링크 |
+| `card/index.html` | 전체 평가사업 목록. ① 이력카드 수록 99개 사업(등급 추이·저성과·원문 수합·이행 회신·’26 열린재정) ② 열린재정 수록 중소기업지원사업평가 전체 사업(’21~’26, 338개). 검색·부처 필터·열 정렬, 사업명 클릭 시 카드로 이동 |
+| `card/eval_history_card.html` | 완성 카드(데이터 내장, 단일 파일). 상단 선택 상자로 99개 사업 전환, `#p<세부사업ID>`로 직접 링크, '전체 사업 목록' 링크 |
 | `card/examples/2030200_고용유지지원금.html` | 실제 데이터 적용 례(고용노동부 고용유지지원금) 단일 카드 |
 | `docs/2030200_고용유지지원금.png` | 위 카드 화면 |
 | `card/template.html` | 카드 서식·렌더링 로직(`__DATA__` 자리에 데이터 삽입) |
@@ -29,6 +30,7 @@
 | `tools/hwp_tables.py` | HWP 5.0 바이너리 표 → 셀(행·열·병합) JSON |
 | `tools/build_dataset.py` | xlsx + 표 JSON → `history.json` (사업명 정규화 결합, 지적/권고/이행/완료일 분리) |
 | `tools/build_card.py` | 템플릿 + 데이터(+예시 문안 파일) → 카드 HTML |
+| `tools/build_index.py` | history.json + openfiscal_results.json → `card/index.html` |
 | `data/sample_findings_3612300.json` | 마케팅지원사업 예시 문안(지적·권고·이행조치, `sample: true`) |
 | `tools/fetch_openfiscal.py` | 열린재정 재정사업평가결과 수집(화면 내부 JSON 엔드포인트, 인증키 불필요, 연도별 재시도·캐시) |
 | `data/openfiscal_results.json` | 열린재정 ’19~’26 재정사업평가결과 전 사업 7,086행(연도·평가제도·소관·회계·프로그램·세부사업·결과·유형) |
@@ -42,6 +44,7 @@ python3 -I tools/fetch_openfiscal.py 2019 2026 data/openfiscal_results.json /tmp
 python3 -I tools/build_dataset.py <등급추이.xlsx> /tmp/tables.json data/history.json data/openfiscal_results.json
 python3 -I tools/build_card.py card/template.html data/history.json card/eval_history_card.html data/sample_findings_3612300.json
 python3 -I tools/build_card.py card/template.html data/history.json card/examples/2030200_고용유지지원금.html --only 2030200   # 단일 사업 카드
+python3 -I tools/build_index.py data/history.json data/openfiscal_results.json card/index.html   # 전체 사업 목록
 ```
 
 ## 실제 데이터 적용 례: 고용노동부 고용유지지원금 (세부사업 2030200)

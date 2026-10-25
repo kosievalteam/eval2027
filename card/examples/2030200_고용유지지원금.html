@@ -115,6 +115,7 @@ a{color:var(--navy)}
 <div class="wrap">
   <div class="toolbar">
     <label>표시 사업 <select id="pick" aria-label="사업 선택"></select></label>
+    <a id="idx" href="index.html">전체 사업 목록</a>
     <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안) · ● 원문 수합 ○ 예시 문안</span>
   </div>
 
@@ -335,7 +336,7 @@ for(const p of sorted){
   o.textContent = `${p.ministry} · ${p.name}${tag}`; sel.appendChild(o);
 }
 const SAMPLE = D.programs.some(x=>x.id==='3612300') ? '3612300' : D.programs[0].id; // 기본: 중소벤처기업부 마케팅지원사업
-if(D.single) document.querySelector('.toolbar label').style.display='none';            // 단일 사업 카드(--only)
+if(D.single){ document.querySelector('.toolbar label').style.display='none'; document.getElementById('idx').style.display='none'; }   // 단일 사업 카드(--only)
 function pickFromHash(){ const m=/^#p(\d+)$/.exec(location.hash); return m && D.programs.some(p=>p.id===m[1]) ? m[1] : null; }
 function show(id){ const p = D.programs.find(x=>x.id===id) || D.programs.find(x=>x.id===SAMPLE); sel.value=p.id; render(p); try{ history.replaceState(null,'','#p'+p.id);}catch(e){} }
 sel.addEventListener('change', e=>show(e.target.value));
