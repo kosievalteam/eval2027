@@ -89,7 +89,12 @@ section{display:flex;flex-direction:column;gap:10px;min-width:0}
 .b-done{background:var(--ok-soft);color:var(--ok)} .b-plan{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--bad-soft);color:var(--bad)} .b-rep{background:var(--bad);color:#fff} .b-smp{background:var(--warn);color:#fff} .b-na{background:var(--mid-soft);color:var(--mid)}
 .empty{color:var(--ink-3);font-size:13px;border:1px dashed var(--line);border-radius:4px;padding:10px 12px;line-height:1.6}
 .empty b{color:var(--ink-2);font-weight:500}
-@media (max-width:640px){.cols{grid-template-columns:1fr}.cols>div+div{border-left:0;border-top:1px solid var(--line-2)}}
+.cols.hdr>div{padding-bottom:2px}
+.cols.prow{border-top:1px dashed var(--line-2)}
+.cols.prow>div{padding-top:8px;padding-bottom:8px}
+.cols.prow .item{margin:0;padding:0;border:0}
+.no{display:inline-block;min-width:1.4em;font-family:var(--mono);font-size:11px;color:var(--navy);border:1px solid var(--navy-soft);background:var(--navy-soft);border-radius:3px;text-align:center;margin-right:6px;vertical-align:1px}
+@media (max-width:640px){.cols{grid-template-columns:1fr}.cols>div+div{border-left:0;border-top:1px solid var(--line-2)}.cols.prow>div+div{border-top:1px dotted var(--line-2)}}
 /* 반복 지적 */
 .rep{border:1px solid var(--bad);border-radius:4px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
 .rep .r{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:4px 10px;font-size:13px}
@@ -217,17 +222,24 @@ function render(p){
         <div><div class="lab">${+y}년 이후 이행실적 (완료일)</div>
         <div class="empty"><b>이행조치 미회신.</b> 부처 이행조치 회신 시 권고 항목 순서대로 대비 표시.</div></div></div>`;
     } else {
-      const paired = A.length===F.length;
-      const rowsF = F.map((f,i)=>`<div class="item"><p class="t">${esc(f.title)}${f.sample?' <span class="badge b-smp">예시</span>':''}</p>
+      const paired = hasA && A.length===F.length;   // 부처 회신이 권고 순서대로 같은 건수면 항목별 행 대응
+      const no = i => paired ? `<span class="no">${i+1}</span>` : '';
+      const fitem = (f,i) => `<div class="item"><p class="t">${no(i)}${esc(f.title)}${f.sample?' <span class="badge b-smp">예시</span>':''}</p>
         ${f.issue?`<p><span class="k">(지적)</span>${esc(f.issue)}</p>`:''}
         ${f.recommend?`<p><span class="k">(권고)</span>${esc(f.recommend)}</p>`:''}
-        ${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}
-        ${paired && hasA ? '' : ''}</div>`).join('');
-      const act = a => `<div class="item"><p class="t">${esc(a.action)}${a.sample?' <span class="badge b-smp">예시</span>':''}${doneBadge(a.done)}</p>${a.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
-      const rowsA = hasA ? (paired ? A.map(act).join('') : A.map(act).join('') + `<p class="note" style="margin-top:8px">권고 ${F.length}건과 이행조치 ${A.length}건의 건수가 달라 순서 대비가 아닌 일괄 제시.</p>`)
-                        : `<div class="empty"><b>이행조치 미회신.</b> ${esc(p.ministry)}가 수합본(’26.10.23)에 ${y}년 권고에 대한 이행조치를 제출하지 않음. 평가위원은 금년 자체평가보고서의 개선 노력 기술로 대체 확인 필요.</div>`;
-      body = `<div class="cols"><div><div class="lab">${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])}) · ${F.length}건</div>${rowsF}</div>
-              <div><div class="lab">${+y}년 이후 이행실적 (완료일)${hasA?` · ${A.length}건`:''}</div>${rowsA}</div></div>`;
+        ${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
+      const act = (a,i) => `<div class="item"><p class="t">${no(i)}${esc(a.action)}${a.sample?' <span class="badge b-smp">예시</span>':''}${doneBadge(a.done)}</p>${a.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
+      const labF = `${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])}) · ${F.length}건`, labA = `${+y}년 이후 이행실적 (완료일)${hasA?` · ${A.length}건`:''}`;
+      if(paired){
+        const done = A.filter(a=>{const d=parseDone(a.done); return d && !(d.y>NOW.y || (d.y===NOW.y && d.m>NOW.m));}).length;
+        body = `<div class="cols hdr"><div><div class="lab">${labF}</div></div><div><div class="lab">${labA} · 완료 ${done}/${A.length}</div></div></div>`
+             + F.map((f,i)=>`<div class="cols prow"><div>${fitem(f,i)}</div><div>${act(A[i],i)}</div></div>`).join('');
+      } else {
+        const rowsF = F.map(fitem).join('');
+        const rowsA = hasA ? A.map(act).join('') + `<p class="note" style="margin-top:8px">권고 ${F.length}건과 이행조치 ${A.length}건의 건수가 달라 순서 대비가 아닌 일괄 제시.</p>`
+                          : `<div class="empty"><b>이행조치 미회신.</b> ${esc(p.ministry)}가 수합본(’26.10.23)에 ${y}년 권고에 대한 이행조치를 제출하지 않음. 평가위원은 금년 자체평가보고서의 개선 노력 기술로 대체 확인 필요.</div>`;
+        body = `<div class="cols"><div><div class="lab">${labF}</div>${rowsF}</div><div><div class="lab">${labA}</div>${rowsA}</div></div>`;
+      }
     }
     pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> ${chip(p.grade[y])} <span>${+y-1}년 실적 평가</span><span class="st"><span class="badge ${stCls}">${esc(st)}</span></span></div>${body}</div>`;
   }
@@ -322,7 +334,8 @@ for(const p of sorted){
   const tag = Object.keys(p.findings).length ? (Object.values(p.findings).flat().some(f=>f.sample) ? ' ○' : ' ●') : '';
   o.textContent = `${p.ministry} · ${p.name}${tag}`; sel.appendChild(o);
 }
-const SAMPLE = '3612300'; // 중소벤처기업부 마케팅지원사업
+const SAMPLE = D.programs.some(x=>x.id==='3612300') ? '3612300' : D.programs[0].id; // 기본: 중소벤처기업부 마케팅지원사업
+if(D.single) document.querySelector('.toolbar label').style.display='none';            // 단일 사업 카드(--only)
 function pickFromHash(){ const m=/^#p(\d+)$/.exec(location.hash); return m && D.programs.some(p=>p.id===m[1]) ? m[1] : null; }
 function show(id){ const p = D.programs.find(x=>x.id===id) || D.programs.find(x=>x.id===SAMPLE); sel.value=p.id; render(p); try{ history.replaceState(null,'','#p'+p.id);}catch(e){} }
 sel.addEventListener('change', e=>show(e.target.value));

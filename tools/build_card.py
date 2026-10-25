@@ -1,11 +1,18 @@
 """template.html + history.json [+ sample_findings_*.json] -> self-contained card HTML.
-Usage: python3 -I build_card.py template.html history.json out.html [data/sample_findings_3612300.json ...]
+Usage: python3 -I build_card.py template.html history.json out.html [data/sample_findings_3612300.json ...] [--only <세부사업ID>]
+--only: 해당 사업 하나만 담은 단일 카드(선택 상자 숨김). 예) --only 2030200 (고용노동부 고용유지지원금)
 sample 파일: 수합본에 원문이 없는 사업의 서식 시연용 예시 문안. 실제 데이터가 없는 연도에만 넣고 항목마다 sample=true 표식."""
 import sys, json
-tpl, data, out = sys.argv[1:4]
+args = sys.argv[1:]
+only = args.pop(args.index('--only') + 1) if '--only' in args else None
+if only: args.remove('--only')
+tpl, data, out = args[:3]
 D = json.load(open(data, encoding='utf-8'))
+if only:
+    D['programs'] = [p for p in D['programs'] if p['id'] == only]
+    assert D['programs'], f'세부사업ID {only} 없음'
 byid = {p['id']: p for p in D['programs']}
-for f in sys.argv[4:]:
+for f in args[3:]:
     S = json.load(open(f, encoding='utf-8'))
     p = byid.get(S.get('program_id'))
     if not p:
@@ -17,7 +24,7 @@ for f in sys.argv[4:]:
         if not p['actions'].get(y):
             p['actions'][y] = [dict(i, sample=True) for i in items]
     p['sample_note'] = S.get('_comment', '')
-slim = {'years': [str(y) for y in D['years']], 'programs': D['programs'], 'fiscal_meta': D.get('fiscal_meta'), 'fiscal_rows': D.get('fiscal_rows')}   # hwp 원표(raw)는 카드에 불필요
+slim = {'years': [str(y) for y in D['years']], 'programs': D['programs'], 'fiscal_meta': D.get('fiscal_meta'), 'fiscal_rows': D.get('fiscal_rows'), 'single': bool(only)}   # hwp 원표(raw)는 카드에 불필요
 js = json.dumps(slim, ensure_ascii=False, separators=(',', ':')).replace('</', '<' + chr(92) + '/')
 html = open(tpl, encoding='utf-8').read().replace('__DATA__', js)
 open(out, 'w', encoding='utf-8').write(html)
