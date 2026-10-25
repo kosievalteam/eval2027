@@ -96,14 +96,15 @@ h1 small{{display:block;font-family:var(--body);font-size:13px;font-weight:400;c
 .ctl{{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;color:var(--ink-2);font-size:13px}}
 .ctl input,.ctl select{{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--sheet);color:var(--ink)}}
 .ctl input{{flex:1 1 240px;min-width:0}}
-.ctl label{{display:flex;gap:6px;align-items:center}}
+.ctl label{{display:flex;gap:6px;align-items:center;white-space:nowrap}}
 .ctl .cnt{{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--ink-3)}}
 h2{{font-size:15px;margin:8px 0 0;display:flex;gap:10px;align-items:baseline}}
 h2 .n{{font-family:var(--mono);font-size:12px;color:var(--navy)}}
 h2 .hint{{font-size:12px;font-weight:400;color:var(--ink-3);margin-left:auto}}
 .box{{background:var(--sheet);border:1px solid var(--line);border-radius:6px;overflow:auto}}
 table{{border-collapse:collapse;width:100%;min-width:980px}}
-th,td{{padding:6px 8px;border-bottom:1px solid var(--line-2);text-align:center;vertical-align:top;font-size:12.5px}}
+th,td{{padding:6px 6px;border-bottom:1px solid var(--line-2);text-align:center;vertical-align:top;font-size:12.5px}}
+td:last-child{{max-width:9em}}
 th{{position:sticky;top:0;background:var(--sheet);color:var(--ink-2);font-weight:500;font-family:var(--mono);font-size:11.5px;cursor:pointer;white-space:nowrap;z-index:1;box-shadow:0 1px 0 var(--line)}}
 th.n,td.n,th.m,td.m{{text-align:left}}
 td.m{{white-space:nowrap;color:var(--ink-2)}}
@@ -111,7 +112,7 @@ td.n{{min-width:16em}}
 td.c{{font-family:var(--mono)}}
 .sub{{font-size:11px;color:var(--ink-3)}}
 a{{color:var(--navy);text-decoration:none;font-weight:500}} a:hover{{text-decoration:underline}}
-.chip{{display:inline-block;min-width:3.6em;padding:2px 6px;border-radius:3px;font-size:11.5px;font-weight:500;line-height:1.3;border:1px solid transparent;margin:1px 0}}
+.chip{{display:inline-block;min-width:3.6em;padding:2px 6px;border-radius:3px;font-size:11.5px;font-weight:500;line-height:1.3;border:1px solid transparent;margin:1px 0;white-space:nowrap}}
 .g-bad{{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}} .g-ok{{background:var(--ok-soft);color:var(--ok)}} .g-mid{{background:var(--mid-soft);color:var(--mid)}}
 .g-warn{{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}} .g-cut{{background:var(--bad);color:#fff}} .g-none{{color:var(--none);border:1px dashed var(--none);min-width:0}}
 .tag{{font-size:10.5px;padding:0 5px;border-radius:3px;background:var(--navy-soft);color:var(--navy);vertical-align:1px}}
