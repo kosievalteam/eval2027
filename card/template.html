@@ -125,7 +125,8 @@ a{color:var(--navy)}
 <script id="data" type="application/json">__DATA__</script>
 <script>
 const D = JSON.parse(document.getElementById('data').textContent);
-const YEARS = D.years;
+const YEARS = D.years;                       // 표시 연도(build_card.py --from, 기본 2020~)
+const Y0 = YEARS[0], Y1 = YEARS[YEARS.length-1];
 const NOW = {y:2026, m:10};
 const LOW = new Set(['미흡','개선필요','감액']);
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -244,7 +245,7 @@ function render(p){
     }
     pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> ${chip(p.grade[y])} <span>${+y-1}년 실적 평가</span><span class="st"><span class="badge ${stCls}">${esc(st)}</span></span></div>${body}</div>`;
   }
-  if(!lows.length) pairs = `<div class="empty">’19~’26년 평가에서 미흡·개선필요 판정 이력 없음.</div>`;
+  if(!lows.length) pairs = `<div class="empty">${Y0}~${Y1}년 평가에서 미흡·개선필요 판정 이력 없음.</div>`;
 
   // ---- 반복 지적
   let repHtml;
@@ -259,7 +260,7 @@ function render(p){
   const checks = [];
   if(lastLow) checks.push(`${lastLow}년 ${p.grade[lastLow]} 판정 권고사항의 이행 여부와 완료일 확인<span class="ex">${(p.actions[lastLow]||[]).length ? `회신된 이행조치 ${(p.actions[lastLow]||[]).length}건의 완료일이 금년 평가 기준시점 이전인지 대조` : '이행조치 미회신 상태이므로 자체평가보고서의 개선 노력 기술과 증빙으로 확인'}</span>`);
   if(lows.length>=2) checks.push(`${lows.join('·')}년 저성과 판정 사유의 동일성 검토<span class="ex">동일 주제(성과지표·집행률·만족도 등)가 재지적된 경우 '반복 미개선'으로 기재하고 등급 판정에 반영</span>`);
-  if(lows.some(y=>+y<=2021) && lows.some(y=>+y>=2022)) checks.push(`등급체계 개편(’22년) 전후 비교 시 '미흡'과 '개선필요'를 동일 저성과 등급으로 간주<span class="ex">’19~’21년 미흡 → ’22년 이후 개선필요로 명칭 변경, 미흡횟수(${p.low_count ?? 0}회)는 양자를 합산</span>`);
+  if(lows.some(y=>+y<=2021) && lows.some(y=>+y>=2022)) checks.push(`등급체계 개편(’22년) 전후 비교 시 '미흡'과 '개선필요'를 동일 저성과 등급으로 간주<span class="ex">’19~’21년 미흡 → ’22년 이후 개선필요로 명칭 변경, 저성과 횟수(${lows.length}회)는 양자를 합산</span>`);
   if(fieldHist.length>1) checks.push(`평가 분야 변경(${fieldHist.join(' → ')})에 따른 비교군 변화 유의<span class="ex">분야 평균 대비 만족도·성과 비교 시 해당 연도 분야 기준 적용</span>`);
   { const c = fiscalCheck(p); const f26 = (p.fiscal['2026']||[]).filter(r=>r.system==='통합재정사업평가');
     if(c.diff.length) checks.push(`열린재정 중소기업지원사업평가 결과와 본 등급의 불일치 ${c.diff.length}건 사유 확인<span class="ex">${c.diff.map(d=>`${d.y}년 본 등급 ${esc(d.g)} / 열린재정 ${esc(d.f)}`).join(', ')}. 등급 확정 후 정정 여부 또는 동명 사업 혼입 여부 점검</span>`);
@@ -283,15 +284,15 @@ function render(p){
       <div><dt>회계·기금</dt><dd>${esc(p.fund)}</dd></div>
       <div><dt>사업 기간</dt><dd class="mono">${esc(p.start||'-')} ~ ${esc(p.end||'-')}</dd></div>
       <div><dt>현행 평가 분야</dt><dd>${esc(fieldNow)}${fieldHist.length>1?` <span class="note">(이전 ${esc(fieldHist.slice(0,-1).join('·'))})</span>`:''}</dd></div>
-      <div><dt>평가 참여</dt><dd class="mono">${evalYears.length}회 / 8년</dd></div>
-      <div><dt>첫 저성과 연도</dt><dd class="mono">${esc(p.first_low||'-')}</dd></div>
-      <div><dt>저성과 판정</dt><dd class="mono">${p.low_count ?? 0}회${lastLow?` (최근 ${lastLow})`:''}</dd></div>
+      <div><dt>평가 참여</dt><dd class="mono">${evalYears.length}회 / ${YEARS.length}년</dd></div>
+      <div><dt>첫 저성과 연도</dt><dd class="mono">${lows.length?lows[0]:'-'}${p.first_low && String(p.first_low)<Y0?` <span class="note">(’${String(p.first_low).slice(2)} 표시 범위 외)</span>`:''}</dd></div>
+      <div><dt>저성과 판정</dt><dd class="mono">${lows.length}회${lastLow?` (최근 ${lastLow})`:''}</dd></div>
       <div><dt>비고</dt><dd>${esc(p.exclude||'해당 없음')}</dd></div>
     </dl>
   </section>
 
   <section>
-    <h2><span class="n">2</span>등급 추이 2019~2026<span class="hint">미흡(’19~’21)·개선필요(’22~)는 동일 저성과 등급</span></h2>
+    <h2><span class="n">2</span>등급 추이 ${Y0}~${Y1}<span class="hint">미흡(~’21)·개선필요(’22~)는 동일 저성과 등급</span></h2>
     <div class="trend"><table>
       <thead><tr><th class="row">평가연도</th>${YEARS.map(y=>`<th>${y}</th>`).join('')}</tr></thead>
       <tbody>

@@ -1,14 +1,17 @@
 """history.json + openfiscal_results.json -> card/index.html (전체 평가사업 목록)
-Usage: python3 -I tools/build_index.py data/history.json data/openfiscal_results.json card/index.html
+Usage: python3 -I tools/build_index.py data/history.json data/openfiscal_results.json card/index.html [--from 2020]
 
 ① 이력카드 수록 사업: xlsx(개선필요사업 등급추이) 99개. 등급 추이·저성과 횟수·원문 수합·이행 회신·열린재정 ’26 결과, 카드 링크
 ② 열린재정 수록 중소기업지원사업평가 전체 사업: ’21~’25 중소기업지원사업평가 결과 + ’26 통합재정사업평가 중 평가유형에 '중소기업'이 포함된 사업
 """
 import sys, json, re, html, collections
-hist_path, fiscal_path, out = sys.argv[1:4]
+args = sys.argv[1:]
+y_from = args.pop(args.index('--from') + 1) if '--from' in args else '2020'
+if '--from' in args: args.remove('--from')
+hist_path, fiscal_path, out = args[:3]
 H = json.load(open(hist_path, encoding='utf-8'))
 F = json.load(open(fiscal_path, encoding='utf-8'))
-YEARS = [str(y) for y in H['years']]
+YEARS = [str(y) for y in H['years'] if str(y) >= y_from]
 esc = html.escape
 
 
@@ -32,7 +35,7 @@ for r in F['rows']:
         uni.setdefault(k, {'account': r['account'], 'program': r['program'], 'years': {}})
         uni[k]['years'].setdefault(r['year'], []).append(r['result'] + ('' if r['system'] == '중소기업지원사업평가' else ' · ' + (r['type'] or '')))
 uni_rows = sorted(uni.items(), key=lambda kv: (kv[0][0], kv[0][1]))
-UYEARS = ['2021', '2022', '2023', '2024', '2025', '2026']
+UYEARS = [y for y in ['2021', '2022', '2023', '2024', '2025', '2026'] if y >= y_from]
 
 LOW = {'미흡', '개선필요', '개선', '감액', '폐지'}
 WARN = {'사업개선'}
@@ -53,8 +56,8 @@ ministries = sorted({mn(p['ministry']) for p in progs} | {k[0] for k, _ in uni_r
 rows1 = []
 for p in progs:
     lows = [y for y in YEARS if p['grade'].get(y) in ('미흡', '개선필요')]
-    fy = sorted(y for y, v in p['findings'].items() if v and not v[0].get('sample'))
-    ay = sorted(y for y, v in p['actions'].items() if v and not v[0].get('sample'))
+    fy = sorted(y for y, v in p['findings'].items() if v and not v[0].get('sample') and y >= y_from)
+    ay = sorted(y for y, v in p['actions'].items() if v and not v[0].get('sample') and y >= y_from)
     f26 = [r['result'] + (' · ' + r['type'] if r.get('type') and r['type'] != '-' else '') for r in p.get('fiscal', {}).get('2026', []) if r['system'] == '통합재정사업평가']
     rows1.append(f'''<tr data-m="{esc(mn(p['ministry']))}" data-t="{esc(mn(p['ministry']) + ' ' + p['name'] + ' ' + p['id'])}">
 <td class="m">{esc(mn(p['ministry']))}</td>
@@ -121,7 +124,7 @@ tr.hide{{display:none}}
 footer{{border-top:1px solid var(--line);padding-top:10px;font-size:11.5px;color:var(--ink-3);line-height:1.7}}
 </style></head><body><div class="wrap">
 <header><div class="eyebrow">중소기업 지원사업 성과평가 · 계속평가 사업 평가이력제(안)</div>
-<h1>전체 평가사업 목록<small>① 이력카드 수록 사업 {len(progs)}개(’19~’26 저성과 이력) · ② 열린재정 수록 중소기업지원사업평가 전체 사업 {len(uni_rows)}개(’21~’26) · 사업명을 누르면 이력카드로 이동</small></h1></header>
+<h1>전체 평가사업 목록<small>① 이력카드 수록 사업 {len(progs)}개(’{YEARS[0][2:]}~’{YEARS[-1][2:]} 저성과 이력) · ② 열린재정 수록 중소기업지원사업평가 전체 사업 {len(uni_rows)}개(’21~’26) · 사업명을 누르면 이력카드로 이동</small></h1></header>
 
 <div class="ctl">
 <input id="q" type="search" placeholder="부처·사업명·세부사업ID 검색" aria-label="검색">
@@ -133,7 +136,7 @@ footer{{border-top:1px solid var(--line);padding-top:10px;font-size:11.5px;color
 <h2><span class="n">①</span>이력카드 수록 사업<span class="hint">열 머리글을 누르면 정렬 · 등급은 중소기업지원사업평가, ’26 열린재정은 통합재정사업평가 결과</span></h2>
 <div class="box"><table id="t1"><thead><tr><th class="m">부처</th><th class="n">세부사업</th>{''.join(f'<th>{y[2:]}</th>' for y in YEARS)}<th>저성과</th><th>지적 원문</th><th>이행 회신</th><th>’26 열린재정</th><th>비고</th></tr></thead>
 <tbody>{''.join(rows1)}</tbody></table></div>
-<p class="note">저성과 = 미흡(’19~’21)·개선필요(’22~) 횟수. 지적 원문·이행 회신은 수합본(’26.10.23)에 실린 평가연도(● 표시, 예시 문안 제외). ’26 열린재정은 통합재정사업평가 결과와 평가유형.</p>
+<p class="note">저성과 = 미흡(~’21)·개선필요(’22~) 횟수(표시 연도 {YEARS[0]}~{YEARS[-1]} 기준). 지적 원문·이행 회신은 수합본(’26.10.23)에 실린 평가연도(● 표시, 예시 문안 제외). ’26 열린재정은 통합재정사업평가 결과와 평가유형.</p>
 
 <h2><span class="n">②</span>열린재정 수록 중소기업지원사업평가 전체 사업<span class="hint">’21~’25 중소기업지원사업평가 결과 · ’26 통합재정사업평가 중 평가유형에 중소기업이 포함된 사업</span></h2>
 <div class="box"><table id="t2"><thead><tr><th class="m">소관</th><th class="n">세부사업</th>{''.join(f'<th>{y[2:]}</th>' for y in UYEARS)}</tr></thead>
