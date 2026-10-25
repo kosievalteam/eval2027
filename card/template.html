@@ -88,6 +88,13 @@ section{display:flex;flex-direction:column;gap:10px;min-width:0}
 .badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:3px;font-weight:500;vertical-align:1px;margin-left:6px}
 .b-done{background:var(--ok-soft);color:var(--ok)} .b-plan{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--bad-soft);color:var(--bad)} .b-rep{background:var(--bad);color:#fff} .b-smp{background:var(--warn);color:#fff} .b-na{background:var(--mid-soft);color:var(--mid)}
 .empty{color:var(--ink-3);font-size:13px;border:1px dashed var(--line);border-radius:4px;padding:10px 12px;line-height:1.6}
+.bt{overflow-x:auto;padding:6px 12px 0}
+.bt table{border-collapse:collapse;width:100%;min-width:640px;font-size:12.5px}
+.bt th,.bt td{padding:6px 8px;border-bottom:1px solid var(--line-2);text-align:center;vertical-align:top}
+.bt th{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--ink-2)}
+.bt th.n,.bt td.n,.bt th.t,.bt td.t{text-align:left}
+.bt td.c{font-family:var(--mono);white-space:nowrap}
+.bt td.t{font-size:12px;color:var(--ink-2);min-width:16em}
 .empty b{color:var(--ink-2);font-weight:500}
 .cols.hdr>div{padding-bottom:2px}
 .cols.prow{border-top:1px dashed var(--line-2)}
@@ -134,7 +141,8 @@ const gradeClass = g => !g ? 'g-none' : g==='감액' ? 'g-cut' : LOW.has(g) ? 'g
 const chip = g => `<span class="chip ${gradeClass(g)}">${g ? esc(g) : '미평가'}</span>`;
 
 // 완료일 문자열 "’24.2월" → {y,m}
-function parseDone(s){ const m = /(\d{2})\.\s*(\d{1,2})월/.exec(s||''); return m ? {y:2000+ +m[1], m:+m[2]} : null; }
+function parseDone(s){ s=s||''; let m = /(\d{2})\.\s*(\d{1,2})월?/.exec(s); if(m) return {y:2000+ +m[1], m:+m[2]};
+  m = /[’‘'`]?(\d{2})\s*~/.exec(s); return m ? {y:2000+ +m[1], m:1} : null; }                 // (’24.2월) (~‘26.12) (‘25~)
 function doneBadge(s){
   const d = parseDone(s);
   if(!d) return '<span class="badge b-na">완료일 미기재</span>';
@@ -197,7 +205,9 @@ function render(p){
   const reps = repeats(p);
   const fieldNow = [...YEARS].reverse().map(y=>p.field[y]).find(Boolean) || '-';
   const fieldHist = [...new Set(YEARS.map(y=>p.field[y]).filter(Boolean))];
-  const hwpYears = ['2023','2024','2025'];
+  const mn = m => (m||'').replace(/\s*\(.*?\)\s*/g,'').trim();
+  const hwpYears = ((D.coverage||{})[mn(p.ministry)]) || (D.coverage||{}).default || ['2023','2024','2025'];
+  const covTxt = `’${hwpYears[0].slice(2)}~’${hwpYears[hwpYears.length-1].slice(2)}`;
 
   const realF = Object.keys(p.findings).filter(y=>!p.findings[y].some(f=>f.sample));
   const realA = Object.keys(p.actions).filter(y=>!p.actions[y].some(a=>a.sample));
@@ -211,16 +221,16 @@ function render(p){
     const isSample = F.some(f=>f.sample) || A.some(a=>a.sample);
     let st, stCls;
     if(isSample) { st=`예시 문안 · 권고 ${F.length}건${hasA?` · 이행조치 ${A.length}건`:' · 이행조치 없음'}`; stCls='b-smp'; }
-    else if(!hwpYears.includes(y)) { st='수합본 범위 외(’23~’25 평가분만 수합)'; stCls='b-na'; }
-    else if(!hasF) { st='평가보고서 원문·이행조치 미수합'; stCls='b-none'; }
-    else if(!hasA) { st='이행조치 미회신'; stCls='b-none'; }
-    else { st=`권고 ${F.length}건 · 이행조치 ${A.length}건 회신`; stCls='b-done'; }
+    else if(hasF && hasA) { st=`권고 ${F.length}건 · 이행조치 ${A.length}건 회신`; stCls='b-done'; }
+    else if(hasF) { st='이행조치 미회신'; stCls='b-none'; }
+    else if(!hwpYears.includes(y)) { st=`수합본 범위 외(${covTxt} 평가분만 수합)`; stCls='b-na'; }
+    else { st='평가보고서 원문·이행조치 미수합'; stCls='b-none'; }
     let body;
     if(!hasF){
       body = `<div class="cols"><div><div class="lab">${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])})</div>
         <div class="empty"><b>지적·권고 원문 미입력.</b> ${hwpYears.includes(y)
           ? `${esc(p.ministry)} 회신분이 수합본(’26.10.23)에 포함되지 않아 공란. ${y}년 평가보고서의 (지적)·(권고) 문단을 이 칸에 전재하면 우측 이행실적과 자동 대비.`
-          : `${y}년 평가분은 수합 대상 연도(’23~’25)가 아님. 평가보고서 DB 연계 시 자동 채움 대상.`}</div></div>
+          : `${y}년 평가분은 수합 대상 연도(${covTxt})가 아님. 평가보고서 DB 연계 시 자동 채움 대상.`}</div></div>
         <div><div class="lab">${+y}년 이후 이행실적 (완료일)</div>
         <div class="empty"><b>이행조치 미회신.</b> 부처 이행조치 회신 시 권고 항목 순서대로 대비 표시.</div></div></div>`;
     } else {
@@ -246,6 +256,15 @@ function render(p){
     pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> ${chip(p.grade[y])} <span>${+y-1}년 실적 평가</span><span class="st"><span class="badge ${stCls}">${esc(st)}</span></span></div>${body}</div>`;
   }
   if(!lows.length) pairs = `<div class="empty">${Y0}~${Y1}년 평가에서 미흡·개선필요 판정 이력 없음.</div>`;
+  // ---- 판정 이후 예산 조치(부처 회신: ’27년 정부안 내역사업 증액·동액, 즉시폐지·이관)
+  const B = p.budget||[], AB = p.abolished||[];
+  if(B.length || AB.length){
+    const rowsB = B.map(b=>`<tr><td class="n">${esc(b.sub)}</td><td class="c">${esc(b.years)}</td><td class="c">${esc(b.b26)}</td><td class="c">${esc(b.b27)}</td><td class="t">${b.reason.map(esc).join('<br>')}</td></tr>`).join('');
+    const rowsA = AB.map(a=>`<tr><td class="n">${esc(a.sub)}</td><td class="c">${esc(a.years)}</td><td class="c">${esc(a.b26)}</td><td class="c"><span class="chip g-cut">폐지</span></td><td class="t">${a.status.map(esc).join('<br>')}</td></tr>`).join('');
+    pairs += `<div class="pair"><div class="yr"><span class="mono">’27 예산안</span> <span>판정 이후 예산 조치 · 내역사업 단위</span><span class="st"><span class="badge b-na">${esc(mn(p.ministry))} 회신</span></span></div>
+      <div class="bt"><table><thead><tr><th class="n">내역사업</th><th>평가연도</th><th>’26 예산</th><th>’27 예산안</th><th class="t">증액·동액 사유 / 폐지·이관 현황</th></tr></thead><tbody>${rowsB}${rowsA}</tbody></table></div>
+      <p class="note" style="padding:0 12px 10px">단위 백만원. 평가연도는 해당 내역사업이 속한 세부사업의 개선필요·미흡 판정 연도. 폐지 행의 ’27 예산안은 폐지(기능 이관 시 이관 사업명 기재).</p></div>`;
+  }
 
   // ---- 반복 지적
   let repHtml;
@@ -325,7 +344,7 @@ function render(p){
     <ul class="check">${checks.map(c=>`<li><span>${c}</span></li>`).join('')}</ul>
   </section>
 
-  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·4절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
+  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·4절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합. ④ 중소벤처기업부 회신(’23~’26 성과평가 개선필요·미흡 판정 사업의 판정 이후 조치 내역, ’26.9.28) → 중기부 사업 3·4절 및 ’27 예산안 내역사업 조치. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
 }
 
 // ---- 사업 선택

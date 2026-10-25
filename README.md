@@ -8,12 +8,13 @@
  - 권고↔이행 대비는 저성과(미흡·개선필요) 연도별로 좌측 평가보고서 원문(지적·권고), 우측 부처 회신(이행조치·완료일)을 대응
  - 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도(0.28 이상) 또는 공통 핵심어로 자동 탐지한 후보를 제시
  - 확인 사항은 카드 데이터에서 자동 생성(최근 저성과 권고 이행, 저성과 사유 동일성, 등급체계 개편, 분야 변경, 열린재정 불일치, ’26년 통합재정사업평가 결과, 타 제도 저성과 이력)
- * 샘플: 중소벤처기업부 마케팅지원사업(세부사업 3612300) — ’21 미흡, ’25 개선필요(표시 범위 밖 ’19 미흡 포함 시 3회). 지적·권고·이행조치는 서식 시연용 **예시 문안**(`data/sample_findings_3612300.json`)으로 채우고 카드에 '예시' 표식·안내 배너를 표시
+ * 샘플: 중소벤처기업부 마케팅지원사업(세부사업 3612300) — ’21 미흡, ’25 개선필요(표시 범위 밖 ’19 미흡 포함 시 3회). ’25년 지적·권고·이행조치는 중기부 회신 원문
 
 ○ 자료 범위와 한계
  - 등급·분야·미흡횟수: 「(’19~’26년) 개선필요사업_등급추이_노란음영수정」 xlsx(99개 사업)
  - 지적·권고 및 이행조치·완료일: 「(2026.10.12) 저성과 사업_개선사항 파악_부처별정리_261023수합본」 hwp(34개 사업·연도, ’23~’25 평가분)
- - 수합본에 중소벤처기업부 회신분이 없어 마케팅지원사업의 ’19·’21·’25년 지적·권고·이행조치는 가상의 예시 문안으로 채움. 실제 평가보고서 원문·부처 회신을 `history.json` 형식으로 입력하면 `build_card.py`가 예시 대신 실제 데이터를 사용(실제 데이터가 있는 연도에는 예시를 넣지 않음)
+ - 중소벤처기업부 회신: 중기부 회신 hwp(’26.9.28)(’23~’26 성과평가 개선필요·미흡 판정 중기부 사업 11개·15개 연도의 지적·권고와 이행조치, ’27년 정부안 증액·동액 내역사업 21개, 즉시폐지 10개 사업의 이관 현황) → 중기부 사업의 3·4절과 '판정 이후 예산 조치' 블록
+ - 마케팅지원사업의 ’25년 지적 6건·이행조치 3건은 중기부 회신 원문으로 채워짐. ’21년 미흡은 회신 범위(’23~’26 평가분) 밖이라 공란. 서식 시연용 예시 문안(`sample_findings_*.json`) 방식은 유지하되 기본 빌드에서는 사용하지 않음
  - 이행조치 미회신 10건(문체부 6, 농림부 3, 금융위 1)은 '이행조치 미회신'으로 표시
  - 열린재정 재정사업평가결과(’19~’26, 7,086행)는 세부사업명·소관 기준으로 99개 중 94개 사업에 결합. 미결합 5개는 열린재정에 동일 사업명이 없는 사업
   * 마케팅지원사업: 중소기업지원사업평가 ’21 미흡·’22~’24 보통·’25 개선(=개선필요), 통합재정사업평가 ’26 사업개선(유형 보조사업·중소기업)
@@ -29,10 +30,9 @@
 | `card/template.html` | 카드 서식·렌더링 로직(`__DATA__` 자리에 데이터 삽입) |
 | `data/history.json` | xlsx 등급 + hwp 지적·권고·이행조치를 세부사업 단위로 결합한 데이터 |
 | `tools/hwp_tables.py` | HWP 5.0 바이너리 표 → 셀(행·열·병합) JSON |
-| `tools/build_dataset.py` | xlsx + 표 JSON → `history.json` (사업명 정규화 결합, 지적/권고/이행/완료일 분리) |
+| `tools/build_dataset.py` | xlsx + 표 JSON(+열린재정, +`--reply 부처=표 JSON`) → `history.json` (사업명 정규화 결합, 지적/권고/이행/완료일 분리, 예산 조치) |
 | `tools/build_card.py` | 템플릿 + 데이터(+예시 문안 파일) → 카드 HTML |
 | `tools/build_index.py` | history.json + openfiscal_results.json → `card/index.html` |
-| `data/sample_findings_3612300.json` | 마케팅지원사업 예시 문안(지적·권고·이행조치, `sample: true`) |
 | `tools/fetch_openfiscal.py` | 열린재정 재정사업평가결과 수집(화면 내부 JSON 엔드포인트, 인증키 불필요, 연도별 재시도·캐시) |
 | `data/openfiscal_results.json` | 열린재정 ’19~’26 재정사업평가결과 전 사업 7,086행(연도·평가제도·소관·회계·프로그램·세부사업·결과·유형) |
 
@@ -41,9 +41,10 @@
 ```bash
 pip install olefile openpyxl
 python3 -I tools/hwp_tables.py <개선사항 수합본.hwp> /tmp/tables.json
+python3 -I tools/hwp_tables.py <중기부 회신.hwp> /tmp/reply_mss.json
 python3 -I tools/fetch_openfiscal.py 2019 2026 data/openfiscal_results.json /tmp/openfiscal_cache
-python3 -I tools/build_dataset.py <등급추이.xlsx> /tmp/tables.json data/history.json data/openfiscal_results.json
-python3 -I tools/build_card.py card/template.html data/history.json card/eval_history_card.html data/sample_findings_3612300.json
+python3 -I tools/build_dataset.py <등급추이.xlsx> /tmp/tables.json data/history.json data/openfiscal_results.json --reply 중소벤처기업부=/tmp/reply_mss.json
+python3 -I tools/build_card.py card/template.html data/history.json card/eval_history_card.html
 python3 -I tools/build_card.py card/template.html data/history.json card/examples/2030200_고용유지지원금.html --only 2030200   # 단일 사업 카드
 python3 -I tools/build_index.py data/history.json data/openfiscal_results.json card/index.html   # 전체 사업 목록
 ```

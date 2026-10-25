@@ -1,8 +1,14 @@
-"""grade.xlsx + tables.json(hwp) [+ openfiscal_results.json] -> data/history.json
-Usage: python3 -I build_dataset.py grade.xlsx tables.json out.json [openfiscal_results.json]"""
+"""grade.xlsx + tables.json(hwp) [+ openfiscal_results.json] [--reply 부처명=tables.json ...] -> data/history.json
+Usage: python3 -I build_dataset.py grade.xlsx tables.json out.json [openfiscal_results.json] [--reply 중소벤처기업부=reply_tables.json]
+--reply: 부처 자체 회신 hwp(hwp_tables.py 출력). 표 머리글로 종류를 판별 — '사유 및 개선 권고'(지적·권고), '이행조치'(이행조치·완료일),
+         '증액·동액 사유'(’27 예산안 내역사업), '폐지·이관 현황'(즉시폐지 사업). 부처 열이 없으므로 부처명을 인자로 받음."""
 import sys, json, re, openpyxl
-xlsx, tjson, out = sys.argv[1:4]
-fiscal_path = sys.argv[4] if len(sys.argv) > 4 else None
+args = sys.argv[1:]
+reply_specs = []
+while '--reply' in args:
+    i = args.index('--reply'); reply_specs.append(args[i + 1]); del args[i:i + 2]
+xlsx, tjson, out = args[:3]
+fiscal_path = args[3] if len(args) > 3 else None
 YEARS=list(range(2019,2027))
 ALIAS={'통상협정국내내책추진지원':'통상협정국내대책추진지원'}
 def norm(s):
@@ -28,7 +34,7 @@ for r in ws.iter_rows(min_row=2):
     })
 
 # ---- hwp tables -> grid with rowspan fill
-T=json.load(open(tjson))
+T=json.load(open(tjson,encoding='utf-8'))
 def grid(t):
     g={}
     for c in t['cells']:
@@ -42,25 +48,26 @@ def split_items(txt):
     items=[]; cur=None
     for ln in [l.strip() for l in txt.split('\n') if l.strip()]:
         ln=ln.replace('­','').strip()
-        if ln.startswith('•'):
-            cur={'title':ln.lstrip('• ').strip(),'issue':'','recommend':'','detail':[]}; items.append(cur)
+        if ln[:1] in '•￭':
+            cur={'title':ln.lstrip('•￭ ').strip(),'issue':'','recommend':'','detail':[]}; items.append(cur)
         elif cur is None:
             cur={'title':ln,'issue':'','recommend':'','detail':[]}; items.append(cur)
-        elif '(지적)' in ln: cur['issue']=re.sub(r'^\*?\s*\(지적\)\s*','',ln.lstrip('* ').strip())
-        elif '(권고)' in ln: cur['recommend']=re.sub(r'^\*?\s*\(권고\)\s*','',ln.lstrip('* ').strip())
+        elif '(지적)' in ln: cur['issue']=re.sub(r'^[\-‐-―*•·ㆍ\s]*\(지적\)\s*','',ln.strip())
+        elif '(권고)' in ln: cur['recommend']=re.sub(r'^[\-‐-―*•·ㆍ\s]*\(권고\)\s*','',ln.strip())
         else: cur['detail'].append(re.sub(r'^[\-\u2010-\u2015\u00ad•*·ㆍ]+\s*','',ln))
     return items
 
+DONE_RE=r'[\(（]((?:~\s*)?[’‘\'`]?\d{2}(?:\.\s*\d{1,2}월?)?(?:\s*~)?[^)）]*)[\)）]\s*$'   # (’24.2월) (‘25~) (~‘26.12, …) (’27.1월 적용 예정)
 def split_actions(txt):
     items=[]; cur=None
     for ln in [l.strip() for l in txt.split('\n') if l.strip()]:
         ln=ln.replace('­','-').strip()
-        if ln.startswith('•'):
-            body=ln.lstrip('• ').strip()
-            m=re.search(r'[\(（]([’‘\'`]?\d{2}\.\s*\d{1,2}월[^)）]*)[\)）]\s*$',body)
+        if ln[:1] in '•￭':
+            body=ln.lstrip('•￭ ').strip()
+            m=re.search(DONE_RE,body)
             cur={'action':body,'done':m.group(1) if m else '','detail':[]}; items.append(cur)
         elif cur is None:
-            m=re.search(r'[\(（]([’‘\'`]?\d{2}\.\s*\d{1,2}월[^)）]*)[\)）]\s*$',ln)
+            m=re.search(DONE_RE,ln)
             cur={'action':ln,'done':m.group(1) if m else '','detail':[]}; items.append(cur)
         else: cur['detail'].append(re.sub(r'^[\-\u2010-\u2015\u00ad•*·ㆍ]+\s*','',ln))
     return items
@@ -74,15 +81,55 @@ for row in grid(T[1])[1:]:
     year,minis,name,body=row
     actions.append({'ministry':minis.strip(),'year':year.strip(),'name':name.replace('\n','').strip(),'items':split_actions(body)})
 
+def mnorm(m): return re.sub(r'\s*\(.*?\)\s*','',m or '').strip()
+def clean_lines(txt): return [re.sub(r'^[￭•\-\u2010-\u2015*·ㆍ\s]+','',l).strip() for l in txt.split('\n') if l.strip()]
+coverage={'default':sorted({r['year'] for r in findings})}
+budget=[]; abolished=[]
+for spec in reply_specs:
+    minis,path=spec.split('=',1)
+    for t in json.load(open(path,encoding='utf-8')):
+        G=grid(t)
+        if len(G)<2: continue
+        hdr=[h.replace('\n','').replace(' ','') for h in G[0]]
+        def col(*names):
+            for n in names:
+                for i,h in enumerate(hdr):
+                    if n in h: return i
+            return None
+        if col('사유및개선권고') is not None:
+            cy,cn,cb=col('연도'),col('세부사업'),col('사유및개선권고')
+            for row in G[1:]:
+                if row[cy].strip(): findings.append({'ministry':minis,'year':row[cy].strip(),'name':row[cn].replace('\n','').strip(),'dept':'','items':split_items(row[cb]),'src':'reply'})
+        elif col('이행조치') is not None:
+            cy,cn,cb=col('연도'),col('세부사업'),col('이행조치')
+            for row in G[1:]:
+                if row[cy].strip(): actions.append({'ministry':minis,'year':row[cy].strip(),'name':row[cn].replace('\n','').strip(),'items':split_actions(row[cb]),'src':'reply'})
+        elif col('증액·동액','증액') is not None and col('27예산') is not None:
+            cn,ci,cy,c26,c27,cr=col('세부사업'),col('내역사업'),col('연도'),col('26예산'),col('27예산'),col('사유')
+            for row in G[1:]:
+                budget.append({'ministry':minis,'name':row[cn].replace('\n','').strip(),'sub':row[ci].replace('\n','').strip(),'years':'·'.join(row[cy].split()),'b26':row[c26].strip(),'b27':row[c27].strip(),'reason':clean_lines(row[cr])})
+        elif col('폐지·이관','폐지') is not None:
+            cn,ci,cy,c26,cr=col('세부사업'),col('내역사업'),col('연도'),col('26예산'),col('폐지')
+            for row in G[1:]:
+                abolished.append({'ministry':minis,'name':row[cn].replace('\n','').strip(),'sub':row[ci].replace('\n','').strip(),'years':'·'.join(row[cy].split()),'b26':row[c26].strip(),'status':clean_lines(row[cr])})
+    coverage[minis]=sorted({r['year'] for r in findings if r.get('src')=='reply' and r['ministry']==minis})
+
 def attach(lst,key):
     un=[]
     for rec in lst:
-        hit=[p for p in progs if norm(p['name'])==norm(rec['name'])] or \
-            [p for p in progs if norm(rec['name']) and (norm(rec['name']) in norm(p['name']) or norm(p['name']) in norm(rec['name']))]
-        if hit: hit[0][key].setdefault(rec['year'],[]).extend(rec['items']); rec['matched']=hit[0]['id']
+        full=MIN.get(rec['ministry'],rec['ministry'])
+        cand=[p for p in progs if norm(p['name'])==norm(rec['name'])] or \
+             [p for p in progs if norm(rec['name']) and (norm(rec['name']) in norm(p['name']) or norm(p['name']) in norm(rec['name']))]
+        hit=[p for p in cand if mnorm(p['ministry'])==full] or cand      # 같은 부처 우선
+        if hit:
+            if isinstance(rec.get('items'),list): hit[0][key].setdefault(rec['year'],[]).extend(rec['items'])
+            else: hit[0].setdefault(key,[]).append(rec)
+            rec['matched']=hit[0]['id']
         else: un.append(rec['name']); rec['matched']=None
     return un
 u1=attach(findings,'findings'); u2=attach(actions,'actions')
+u3=attach([dict(b,items=None) for b in budget],'budget'); u4=attach([dict(a,items=None) for a in abolished],'abolished')
+print('reply coverage:',coverage,'| budget rows',len(budget),'unmatched',u3,'| abolished rows',len(abolished),'unmatched',u4)
 
 # ---- 열린재정 재정사업평가결과 결합: 세부사업명(정규화) 일치, 복수 후보면 소관명 일치 우선
 MINI_ALIAS={'산업통상자원부':['산업통상자원부','기후에너지환경부','산업통상부'],'중소벤처기업부':['중소벤처기업부'],'환경부':['환경부','기후에너지환경부']}
@@ -109,7 +156,7 @@ if fiscal_path:
         p['fiscal'].setdefault(r['year'],[]).append(rec); fiscal_stats['matched_rows']+=1
     fiscal_stats['programs_with_fiscal']=sum(1 for p in progs if p['fiscal'])
     print('fiscal:',fiscal_stats)
-json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions,'fiscal_meta':(json.load(open(fiscal_path,encoding='utf-8'))['meta'] if fiscal_path else None),'fiscal_rows':fiscal_stats['rows']},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
+json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions,'coverage':coverage,'fiscal_meta':(json.load(open(fiscal_path,encoding='utf-8'))['meta'] if fiscal_path else None),'fiscal_rows':fiscal_stats['rows']},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
 print('programs',len(progs),'findings rows',len(findings),'actions rows',len(actions))
 print('unmatched findings:',u1); print('unmatched actions:',u2)
 both=[p for p in progs if p['findings'] and p['actions']]
