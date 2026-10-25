@@ -4,6 +4,9 @@ Usage: python3 -I build_dataset.py grade.xlsx tables.json out.json [openfiscal_r
          '증액·동액 사유'(’27 예산안 내역사업), '폐지·이관 현황'(즉시폐지 사업). 부처 열이 없으므로 부처명을 인자로 받음."""
 import sys, json, re, openpyxl
 args = sys.argv[1:]
+jobs_path = None
+if '--jobs' in args:
+    i = args.index('--jobs'); jobs_path = args[i + 1]; del args[i:i + 2]
 reply_specs = []
 while '--reply' in args:
     i = args.index('--reply'); reply_specs.append(args[i + 1]); del args[i:i + 2]
@@ -156,7 +159,32 @@ if fiscal_path:
         p['fiscal'].setdefault(r['year'],[]).append(rec); fiscal_stats['matched_rows']+=1
     fiscal_stats['programs_with_fiscal']=sum(1 for p in progs if p['fiscal'])
     print('fiscal:',fiscal_stats)
-json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions,'coverage':coverage,'fiscal_meta':(json.load(open(fiscal_path,encoding='utf-8'))['meta'] if fiscal_path else None),'fiscal_rows':fiscal_stats['rows']},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
+# ---- 일자리사업 평가보고서(--jobs): 열린재정에 미공개인 연도의 일자리사업평가 등급·종합의견·권고를 결합
+jobs_stats={'records':0,'attached':0}
+if jobs_path:
+    JB=json.load(open(jobs_path,encoding='utf-8'))
+    JALIAS={'산업통상부':'산업통상자원부','기후에너지환경부':'환경부','성평등가족부':'여성가족부'}
+    by_name2={}
+    for p in progs:
+        by_name2.setdefault(norm(p['name']),[]).append(p)
+        m=re.match(r'(.+?)_\(과거\)(.+)',p['name'])
+        if m:
+            for part in m.groups(): by_name2.setdefault(norm(part),[]).append(p)
+    for r in JB['records']:
+        jobs_stats['records']+=1
+        if not r['grade']: continue
+        cands=by_name2.get(norm(r['name'])) or []
+        cands=[p for p in cands if mnorm(p['ministry']) in (r['ministry'],JALIAS.get(r['ministry'],''))] or cands
+        if not cands: continue
+        p=cands[0]
+        p['fiscal'].setdefault(r['year'],[]).append({'system':'일자리사업평가','result':r['grade'],'type':r['job_type']+('/'+r['sub_type'] if r['sub_type'] else ''),
+            'ministry':r['ministry'],'account':'평가보고서','program':r['category'],'src_name':r['name']+(f"({r['sub']})" if r['sub'] else '')})
+        p.setdefault('other_findings',{}).setdefault(r['year'],[]).append({'system':'일자리사업평가','grade':r['grade'],'grade_raw':r['grade_raw'],'sub':r['sub'],
+            'job_type':r['job_type'],'sub_type':r['sub_type'],'summary':r['summary'],'items':r['items'],'file':r['file']})
+        jobs_stats['attached']+=1
+    print('jobs:',jobs_stats)
+for p in progs: p.setdefault('other_findings',{})
+json.dump({'years':YEARS,'programs':progs,'hwp_findings':findings,'hwp_actions':actions,'coverage':coverage,'jobs_meta':({'year':JB['year'],'source':JB['source'],'count':JB['count']} if jobs_path else None),'fiscal_meta':(json.load(open(fiscal_path,encoding='utf-8'))['meta'] if fiscal_path else None),'fiscal_rows':fiscal_stats['rows']},open(out,'w',encoding='utf-8'),ensure_ascii=False,indent=1)
 print('programs',len(progs),'findings rows',len(findings),'actions rows',len(actions))
 print('unmatched findings:',u1); print('unmatched actions:',u2)
 both=[p for p in progs if p['findings'] and p['actions']]

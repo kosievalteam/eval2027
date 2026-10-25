@@ -16,7 +16,8 @@ if only:
     assert D['programs'], f'세부사업ID {only} 없음'
 D['years'] = [y for y in D['years'] if str(y) >= y_from]
 for p in D['programs']:
-    for k in ('grade', 'field', 'findings', 'actions', 'fiscal'):
+    p.setdefault('other_findings', {})
+    for k in ('grade', 'field', 'findings', 'actions', 'fiscal', 'other_findings'):
         p[k] = {y: v for y, v in p.get(k, {}).items() if str(y) >= y_from}
     p.setdefault('budget', []); p.setdefault('abolished', [])
 byid = {p['id']: p for p in D['programs']}
@@ -34,7 +35,7 @@ for f in args[3:]:
         if not p['actions'].get(y):
             p['actions'][y] = [dict(i, sample=True) for i in items]
     p['sample_note'] = S.get('_comment', '')
-slim = {'years': [str(y) for y in D['years']], 'programs': D['programs'], 'fiscal_meta': D.get('fiscal_meta'), 'fiscal_rows': D.get('fiscal_rows'), 'coverage': D.get('coverage'), 'single': bool(only)}   # hwp 원표(raw)는 카드에 불필요
+slim = {'years': [str(y) for y in D['years']], 'programs': D['programs'], 'fiscal_meta': D.get('fiscal_meta'), 'fiscal_rows': D.get('fiscal_rows'), 'coverage': D.get('coverage'), 'jobs_meta': D.get('jobs_meta'), 'single': bool(only)}   # hwp 원표(raw)는 카드에 불필요
 js = json.dumps(slim, ensure_ascii=False, separators=(',', ':')).replace('</', '<' + chr(92) + '/')
 html = open(tpl, encoding='utf-8').read().replace('__DATA__', js)
 open(out, 'w', encoding='utf-8').write(html)

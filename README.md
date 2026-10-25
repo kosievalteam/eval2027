@@ -14,6 +14,7 @@
  - 등급·분야·미흡횟수: 「(’19~’26년) 개선필요사업_등급추이_노란음영수정」 xlsx(99개 사업)
  - 지적·권고 및 이행조치·완료일: 「(2026.10.12) 저성과 사업_개선사항 파악_부처별정리_261023수합본」 hwp(34개 사업·연도, ’23~’25 평가분)
  - 중소벤처기업부 회신: 중기부 회신 hwp(’26.9.28)(’23~’26 성과평가 개선필요·미흡 판정 중기부 사업 11개·15개 연도의 지적·권고와 이행조치, ’27년 정부안 증액·동액 내역사업 21개, 즉시폐지 10개 사업의 이관 현황) → 중기부 사업의 3·4절과 '판정 이후 예산 조치' 블록
+ - 재정지원 일자리사업 평가보고서(’26년, 사업별 HWP 161개 파일·162개 내역): 열린재정에 ’26년 일자리사업평가가 공개되지 않아 보고서에서 직접 등급(Ⅲ절 '평가 등급')·종합의견·제도개선 권고를 추출. 카드 수록 사업 중 16개 결합 → 2절 '타 재정사업평가제도' 행, 3절 '평가보고서 원문' 블록, 4절 교차 지적(본 평가 지적 ↔ 일자리 권고)
  - 마케팅지원사업의 ’25년 지적 6건·이행조치 3건은 중기부 회신 원문으로 채워짐. ’21년 미흡은 회신 범위(’23~’26 평가분) 밖이라 공란. 서식 시연용 예시 문안(`sample_findings_*.json`) 방식은 유지하되 기본 빌드에서는 사용하지 않음
  - 이행조치 미회신 10건(문체부 6, 농림부 3, 금융위 1)은 '이행조치 미회신'으로 표시
  - 열린재정 재정사업평가결과(’19~’26, 7,086행)는 세부사업명·소관 기준으로 99개 중 94개 사업에 결합. 미결합 5개는 열린재정에 동일 사업명이 없는 사업
@@ -30,7 +31,9 @@
 | `card/template.html` | 카드 서식·렌더링 로직(`__DATA__` 자리에 데이터 삽입) |
 | `data/history.json` | xlsx 등급 + hwp 지적·권고·이행조치를 세부사업 단위로 결합한 데이터 |
 | `tools/hwp_tables.py` | HWP 5.0 바이너리 표 → 셀(행·열·병합) JSON |
-| `tools/build_dataset.py` | xlsx + 표 JSON(+열린재정, +`--reply 부처=표 JSON`) → `history.json` (사업명 정규화 결합, 지적/권고/이행/완료일 분리, 예산 조치) |
+| `tools/parse_jobs_reports.py` | 일자리사업 평가보고서 폴더(HWP 5.0 OLE 또는 hwpx) → `data/jobs_eval_2026.json` (파일명에서 부처·세부사업·내역사업, Ⅲ절에서 등급·종합의견·권고) |
+| `data/jobs_eval_2026.json` | ’26년 일자리사업평가 162개 내역의 등급·종합의견·권고 |
+| `tools/build_dataset.py` | xlsx + 표 JSON(+열린재정, +`--reply 부처=표 JSON`, +`--jobs 일자리 JSON`) → `history.json` |
 | `tools/build_card.py` | 템플릿 + 데이터(+예시 문안 파일) → 카드 HTML |
 | `tools/build_index.py` | history.json + openfiscal_results.json → `card/index.html` |
 | `tools/fetch_openfiscal.py` | 열린재정 재정사업평가결과 수집(화면 내부 JSON 엔드포인트, 인증키 불필요, 연도별 재시도·캐시) |
@@ -42,8 +45,9 @@
 pip install olefile openpyxl
 python3 -I tools/hwp_tables.py <개선사항 수합본.hwp> /tmp/tables.json
 python3 -I tools/hwp_tables.py <중기부 회신.hwp> /tmp/reply_mss.json
+python3 -I tools/parse_jobs_reports.py <일자리사업 평가보고서 폴더(zip 해제)> data/jobs_eval_2026.json 2026
 python3 -I tools/fetch_openfiscal.py 2019 2026 data/openfiscal_results.json /tmp/openfiscal_cache
-python3 -I tools/build_dataset.py <등급추이.xlsx> /tmp/tables.json data/history.json data/openfiscal_results.json --reply 중소벤처기업부=/tmp/reply_mss.json
+python3 -I tools/build_dataset.py <등급추이.xlsx> /tmp/tables.json data/history.json data/openfiscal_results.json --reply 중소벤처기업부=/tmp/reply_mss.json --jobs data/jobs_eval_2026.json
 python3 -I tools/build_card.py card/template.html data/history.json card/eval_history_card.html
 python3 -I tools/build_card.py card/template.html data/history.json card/examples/2030200_고용유지지원금.html --only 2030200   # 단일 사업 카드
 python3 -I tools/build_index.py data/history.json data/openfiscal_results.json card/index.html   # 전체 사업 목록
@@ -54,7 +58,7 @@ python3 -I tools/build_index.py data/history.json data/openfiscal_results.json c
 □ 수합본에 지적·권고(5건)와 이행조치(5건)가 모두 실려 있는 사업으로, 예시 문안 없이 세 자료가 그대로 카드에 들어간 경우. 단일 카드 `card/examples/2030200_고용유지지원금.html`, 화면 `docs/2030200_고용유지지원금.png`
 
 ○ 1·2절 — xlsx 행 그대로: 기금 · 1995~계속 · 예산서 1045-350 · 분야 인력(’20 보호, ’26 회복) · 등급 ’20 보통 → ’21 미흡 → ’22 보통 → ’23 개선필요 → ’24·’25 보통 → ’26 개선필요(표시 범위 ’20~’26 기준 저성과 3회, 연속 없음. ’19 미흡은 범위 밖)
- - 타 재정사업평가제도(열린재정): 일자리사업평가 ’21 우수 · ’24 개선 · ’25 양호, 통합재정사업평가 ’26 감액(유형 일자리·중소기업). 중소기업지원사업평가 공개값(’21 미흡, ’23 개선, ’24·’25 보통)은 xlsx 등급과 4개 연도 모두 일치
+ - 타 재정사업평가제도: 일자리사업평가 ’21 우수 · ’24 개선 · ’25 양호(열린재정) · ’26 개선필요(평가보고서), 통합재정사업평가 ’26 감액(유형 일자리·중소기업). 중소기업지원사업평가 공개값(’21 미흡, ’23 개선, ’24·’25 보통)은 xlsx 등급과 4개 연도 모두 일치
 ○ 3절 — 2023년(’22년 실적) 개선필요 판정의 권고 5건과 고용부 회신 이행조치 5건이 같은 순서·같은 건수라 항목별로 행을 맞춰 대비(①~⑤ 번호, 완료일 배지)
  - ① 수요 감소에 따른 집행률 부진(77.7%) → 예산 조정 ’22.12월(597,621 → 197,220백만원)
  - ② 부정수급 대응 미흡(390건·12,307백만원) → 동일 IP 경고·계약만료자 자동 경보 등 전산 개선 ’23.7월
@@ -62,7 +66,8 @@ python3 -I tools/build_index.py data/history.json data/openfiscal_results.json c
  - ④ 수혜기업 고용증감률 -14.2%·생존율 83.1% → 고용유지 장려기간 신설(6개월 내 10% 이상 고용조정 시 2년 신규지원 제한) ’24.2월
  - ⑤ 현장 의견수렴·정보제공 부족 → 담당자·사업주 간담회, 활용 안내서 배포 ’24.7월
  - ’21년 미흡과 ’26년 개선필요는 수합 대상 연도(’23~’25 평가분)가 아니어서 '수합본 범위 외'로 표시
-○ 4절 — 지적 원문이 수합된 연도가 2023년 하나뿐이라 연도 간 반복 판정은 '판정 불가'로 표시하고, 등급 이력상 ’21·’23·’26년 저성과 반복을 우선 확인 과제로 제시
+○ 3절 끝 — ’26년 일자리사업평가 보고서의 종합의견 5건과 제도개선 권고 7건(정량지표 관리, 반복 수급 방지, 지원 수준 현실화, 신청 절차 간소화, 현장 인력, 지원대상 관리, 예산 운용)을 '평가보고서 원문' 블록으로 제시
+○ 4절 — 본 평가 지적 원문이 수합된 연도는 2023년 하나라 연도 간 반복은 '판정 불가'이나, ’23년 '수요 감소에 따른 집행률 부진'이 ’26년 일자리사업평가 권고(정량지표 관리 강화, 경제 상황을 고려한 예산 운용)와 '교차' 지적으로 자동 탐지됨
 ○ 5절 — 자동 생성된 확인 사항: ’26년 개선필요 권고의 이행 확인(이행조치 미회신), 3개 저성과 연도 사유의 동일성, 등급체계 개편 전후 합산(3회), 분야 변경(인력→보호→회복), ’26년 통합재정사업평가 '감액'과의 연계, ’24년 일자리사업평가 '개선' 이력
 
 ○ 시사점

@@ -58,7 +58,8 @@ for p in progs:
     lows = [y for y in YEARS if p['grade'].get(y) in ('미흡', '개선필요')]
     fy = sorted(y for y, v in p['findings'].items() if v and not v[0].get('sample') and y >= y_from)
     ay = sorted(y for y, v in p['actions'].items() if v and not v[0].get('sample') and y >= y_from)
-    f26 = [r['result'] + (' · ' + r['type'] if r.get('type') and r['type'] != '-' else '') for r in p.get('fiscal', {}).get('2026', []) if r['system'] == '통합재정사업평가']
+    f26 = [r['result'] + (' · 일자리' if r['system'] == '일자리사업평가' else (' · ' + r['type'] if r.get('type') and r['type'] != '-' else ''))
+           for r in p.get('fiscal', {}).get('2026', []) if r['system'] != '중소기업지원사업평가']
     rows1.append(f'''<tr data-m="{esc(mn(p['ministry']))}" data-t="{esc(mn(p['ministry']) + ' ' + p['name'] + ' ' + p['id'])}">
 <td class="m">{esc(mn(p['ministry']))}</td>
 <td class="n"><a href="eval_history_card.html#p{p['id']}">{esc(p['name'])}</a><br><span class="sub">{esc(p['fund'] or '')} · {esc(p['id'])} · {esc(p['budget_code'] or '-')}</span></td>
@@ -134,9 +135,9 @@ footer{{border-top:1px solid var(--line);padding-top:10px;font-size:11.5px;color
 </div>
 
 <h2><span class="n">①</span>이력카드 수록 사업<span class="hint">열 머리글을 누르면 정렬 · 등급은 중소기업지원사업평가, ’26 열린재정은 통합재정사업평가 결과</span></h2>
-<div class="box"><table id="t1"><thead><tr><th class="m">부처</th><th class="n">세부사업</th>{''.join(f'<th>{y[2:]}</th>' for y in YEARS)}<th>저성과</th><th>지적 원문</th><th>이행 회신</th><th>’26 열린재정</th><th>비고</th></tr></thead>
+<div class="box"><table id="t1"><thead><tr><th class="m">부처</th><th class="n">세부사업</th>{''.join(f'<th>{y[2:]}</th>' for y in YEARS)}<th>저성과</th><th>지적 원문</th><th>이행 회신</th><th>’26 타 제도</th><th>비고</th></tr></thead>
 <tbody>{''.join(rows1)}</tbody></table></div>
-<p class="note">저성과 = 미흡(~’21)·개선필요(’22~) 횟수(표시 연도 {YEARS[0]}~{YEARS[-1]} 기준). 지적 원문·이행 회신은 수합본(’26.10.23)에 실린 평가연도(● 표시, 예시 문안 제외). ’26 열린재정은 통합재정사업평가 결과와 평가유형.</p>
+<p class="note">저성과 = 미흡(~’21)·개선필요(’22~) 횟수(표시 연도 {YEARS[0]}~{YEARS[-1]} 기준). 지적 원문·이행 회신은 수합본(’26.10.23)에 실린 평가연도(● 표시, 예시 문안 제외). ’26 타 제도는 열린재정 통합재정사업평가 결과(평가유형 병기)와 일자리사업 평가보고서의 일자리사업평가 등급.</p>
 
 <h2><span class="n">②</span>열린재정 수록 중소기업지원사업평가 전체 사업<span class="hint">’21~’25 중소기업지원사업평가 결과 · ’26 통합재정사업평가 중 평가유형에 중소기업이 포함된 사업</span></h2>
 <div class="box"><table id="t2"><thead><tr><th class="m">소관</th><th class="n">세부사업</th>{''.join(f'<th>{y[2:]}</th>' for y in UYEARS)}</tr></thead>
