@@ -60,6 +60,8 @@ section{display:flex;flex-direction:column;gap:10px;min-width:0}
 .g-none{color:var(--none);border:1px dashed var(--none);background:transparent}
 .g-wait{color:var(--ink-3);border:1px dashed var(--line);background:transparent;font-weight:400}
 .g-cut{background:var(--bad);color:#fff}
+.banner{border:1px solid var(--warn);background:var(--warn-soft);color:var(--ink);border-radius:4px;padding:8px 12px;font-size:12.5px;line-height:1.6}
+.banner b{color:var(--warn);font-weight:700}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 .kpi{border-left:3px solid var(--navy);padding:4px 12px;min-width:0}
 .kpi b{display:block;font-size:20px;font-family:var(--display);line-height:1.2;font-variant-numeric:tabular-nums}
@@ -84,7 +86,7 @@ section{display:flex;flex-direction:column;gap:10px;min-width:0}
 .item .sub{margin:2px 0 0 1em;font-size:12.5px;color:var(--ink-2)}
 .item .sub::before{content:"- ";color:var(--ink-3)}
 .badge{display:inline-block;font-size:11px;padding:1px 7px;border-radius:3px;font-weight:500;vertical-align:1px;margin-left:6px}
-.b-done{background:var(--ok-soft);color:var(--ok)} .b-plan{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--bad-soft);color:var(--bad)} .b-rep{background:var(--bad);color:#fff} .b-na{background:var(--mid-soft);color:var(--mid)}
+.b-done{background:var(--ok-soft);color:var(--ok)} .b-plan{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--bad-soft);color:var(--bad)} .b-rep{background:var(--bad);color:#fff} .b-smp{background:var(--warn);color:#fff} .b-na{background:var(--mid-soft);color:var(--mid)}
 .empty{color:var(--ink-3);font-size:13px;border:1px dashed var(--line);border-radius:4px;padding:10px 12px;line-height:1.6}
 .empty b{color:var(--ink-2);font-weight:500}
 @media (max-width:640px){.cols{grid-template-columns:1fr}.cols>div+div{border-left:0;border-top:1px solid var(--line-2)}}
@@ -108,7 +110,7 @@ a{color:var(--navy)}
 <div class="wrap">
   <div class="toolbar">
     <label>표시 사업 <select id="pick" aria-label="사업 선택"></select></label>
-    <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안)</span>
+    <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안) · ● 원문 수합 ○ 예시 문안</span>
   </div>
 
   <article class="sheet" id="card"></article>
@@ -190,13 +192,19 @@ function render(p){
   const fieldHist = [...new Set(YEARS.map(y=>p.field[y]).filter(Boolean))];
   const hwpYears = ['2023','2024','2025'];
 
+  const realF = Object.keys(p.findings).filter(y=>!p.findings[y].some(f=>f.sample));
+  const realA = Object.keys(p.actions).filter(y=>!p.actions[y].some(a=>a.sample));
+  const hasSample = Object.values(p.findings).flat().some(f=>f.sample);
+
   // ---- 권고 ↔ 이행 블록(저성과 연도별)
   let pairs = '';
   for(const y of lows){
     const F = p.findings[y] || [], A = p.actions[y] || [];
     const hasF = F.length>0, hasA = A.length>0;
+    const isSample = F.some(f=>f.sample) || A.some(a=>a.sample);
     let st, stCls;
-    if(!hwpYears.includes(y)) { st='수합본 범위 외(’23~’25 평가분만 수합)'; stCls='b-na'; }
+    if(isSample) { st=`예시 문안 · 권고 ${F.length}건${hasA?` · 이행조치 ${A.length}건`:' · 이행조치 없음'}`; stCls='b-smp'; }
+    else if(!hwpYears.includes(y)) { st='수합본 범위 외(’23~’25 평가분만 수합)'; stCls='b-na'; }
     else if(!hasF) { st='평가보고서 원문·이행조치 미수합'; stCls='b-none'; }
     else if(!hasA) { st='이행조치 미회신'; stCls='b-none'; }
     else { st=`권고 ${F.length}건 · 이행조치 ${A.length}건 회신`; stCls='b-done'; }
@@ -210,12 +218,12 @@ function render(p){
         <div class="empty"><b>이행조치 미회신.</b> 부처 이행조치 회신 시 권고 항목 순서대로 대비 표시.</div></div></div>`;
     } else {
       const paired = A.length===F.length;
-      const rowsF = F.map((f,i)=>`<div class="item"><p class="t">${esc(f.title)}</p>
+      const rowsF = F.map((f,i)=>`<div class="item"><p class="t">${esc(f.title)}${f.sample?' <span class="badge b-smp">예시</span>':''}</p>
         ${f.issue?`<p><span class="k">(지적)</span>${esc(f.issue)}</p>`:''}
         ${f.recommend?`<p><span class="k">(권고)</span>${esc(f.recommend)}</p>`:''}
         ${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}
         ${paired && hasA ? '' : ''}</div>`).join('');
-      const act = a => `<div class="item"><p class="t">${esc(a.action)}${doneBadge(a.done)}</p>${a.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
+      const act = a => `<div class="item"><p class="t">${esc(a.action)}${a.sample?' <span class="badge b-smp">예시</span>':''}${doneBadge(a.done)}</p>${a.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
       const rowsA = hasA ? (paired ? A.map(act).join('') : A.map(act).join('') + `<p class="note" style="margin-top:8px">권고 ${F.length}건과 이행조치 ${A.length}건의 건수가 달라 순서 대비가 아닌 일괄 제시.</p>`)
                         : `<div class="empty"><b>이행조치 미회신.</b> ${esc(p.ministry)}가 수합본(’26.10.23)에 ${y}년 권고에 대한 이행조치를 제출하지 않음. 평가위원은 금년 자체평가보고서의 개선 노력 기술로 대체 확인 필요.</div>`;
       body = `<div class="cols"><div><div class="lab">${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])}) · ${F.length}건</div>${rowsF}</div>
@@ -228,7 +236,7 @@ function render(p){
   // ---- 반복 지적
   let repHtml;
   const repItems = [];
-  for(const r of reps) repItems.push(`<div class="r"><span class="y">${r.y1} → ${r.y2}</span><p><b>${esc(r.a.title)}</b> → <b>${esc(r.b.title)}</b>${r.key?` <span class="badge b-rep">반복 · ${esc(r.key)}</span>`:' <span class="badge b-rep">반복</span>'}<br><span style="color:var(--ink-2);font-size:12.5px">${esc(r.b.issue||'')}</span></p></div>`);
+  for(const r of reps) repItems.push(`<div class="r"><span class="y">${r.y1} → ${r.y2}</span><p><b>${esc(r.a.title)}</b> → <b>${esc(r.b.title)}</b>${r.key?` <span class="badge b-rep">반복 · ${esc(r.key)}</span>`:' <span class="badge b-rep">반복</span>'}${(r.a.sample||r.b.sample)?' <span class="badge b-smp">예시</span>':''}<br><span style="color:var(--ink-2);font-size:12.5px">${esc(r.b.issue||'')}</span></p></div>`);
   for(const c of cons) repItems.push(`<div class="r"><span class="y">${c}</span><p><b>연속 저성과 판정</b> <span class="badge b-rep">2년 연속</span><br><span style="color:var(--ink-2);font-size:12.5px">전년 권고 이행에도 등급이 회복되지 않았거나 이행이 없었음을 의미. 이행조치의 실효성 검토 필요.</span></p></div>`);
   if(repItems.length) repHtml = `<div class="rep">${repItems.join('')}</div>`;
   else if(Object.keys(p.findings).length>=2) repHtml = `<div class="empty">수합된 ${Object.keys(p.findings).join('·')}년 지적 간 동일 주제의 반복은 탐지되지 않음(문자 2-gram 유사도 0.28 미만, 공통 핵심어 없음).</div>`;
@@ -244,6 +252,8 @@ function render(p){
     if(c.diff.length) checks.push(`열린재정 중소기업지원사업평가 결과와 본 등급의 불일치 ${c.diff.length}건 사유 확인<span class="ex">${c.diff.map(d=>`${d.y}년 본 등급 ${esc(d.g)} / 열린재정 ${esc(d.f)}`).join(', ')}. 등급 확정 후 정정 여부 또는 동명 사업 혼입 여부 점검</span>`);
     if(f26.length) checks.push(`2026년 통합재정사업평가 결과 ‘${esc(f26.map(r=>r.result).join('/'))}’(유형 ${esc(f26.map(r=>r.type).join('/'))})와 금년 평가의 연계<span class="ex">통합평가에서 감액·사업개선으로 분류된 사유가 본 평가 지적사항과 중복되는지 대조</span>`);
     if(!Object.keys(p.fiscal).length) checks.push(`열린재정 재정사업평가결과 미수록 사유 확인<span class="ex">사업명 변경·통폐합·평가 대상 제외 여부를 소관 부처에 확인</span>`); }
+  { const otherLow = Object.entries(p.fiscal||{}).flatMap(([y,rs])=>rs.filter(r=>r.system!=='중소기업지원사업평가' && r.system!=='통합재정사업평가' && FIS_BAD.has(r.result)).map(r=>`${y}년 ${r.system} ${r.result}${r.src_name!==p.name?`(${r.src_name})`:''}`));
+    if(otherLow.length) checks.push(`타 평가제도의 저성과 판정 이력 확인<span class="ex">${esc(otherLow.join(', '))} → 해당 평가의 지적사항과 금년 지적의 중복 여부 검토</span>`); }
   if(p.exclude) checks.push(`제외사유 '${esc(p.exclude)}' 적용 여부 확인`);
 
   document.getElementById('card').innerHTML = `
@@ -279,14 +289,15 @@ function render(p){
     <div class="kpis">
       <div class="kpi ${lows.length?'alert':''}"><b>${lows.length}회</b><span>저성과 판정(미흡·개선필요)</span></div>
       <div class="kpi ${cons.length?'alert':''}"><b>${cons.length?cons.join(', '):'없음'}</b><span>연속 저성과</span></div>
-      <div class="kpi"><b>${Object.keys(p.findings).length}/${lows.filter(y=>hwpYears.includes(y)).length}</b><span>수합본 수록 저성과 연도 중 지적 원문 확보</span></div>
-      <div class="kpi ${lows.some(y=>hwpYears.includes(y)) && !Object.keys(p.actions).length ? 'alert':''}"><b>${Object.keys(p.actions).length}건</b><span>이행조치 회신 연도</span></div>
+      <div class="kpi"><b>${realF.length}/${lows.filter(y=>hwpYears.includes(y)).length}</b><span>수합본 수록 저성과 연도 중 지적 원문 확보</span></div>
+      <div class="kpi ${lows.some(y=>hwpYears.includes(y)) && !realA.length ? 'alert':''}"><b>${realA.length}건</b><span>이행조치 회신 연도</span></div>
     </div>
     <p class="note">${fiscalNote(p)}</p>
   </section>
 
   <section>
     <h2><span class="n">3</span>전년도 권고 ↔ 금년도 이행실적 대비<span class="hint">저성과 연도별 · 좌: 평가보고서 원문, 우: 부처 회신</span></h2>
+    ${hasSample?`<div class="banner"><b>예시 데이터 안내.</b> ${esc(p.sample_note||'아래 지적·권고·이행조치 중 예시 표식 항목은 서식 시연용 가상 문안으로, 실제 평가보고서 원문과 부처 회신으로 교체해야 함.')}</div>`:''}
     ${pairs}
   </section>
 
@@ -300,7 +311,7 @@ function render(p){
     <ul class="check">${checks.map(c=>`<li><span>${c}</span></li>`).join('')}</ul>
   </section>
 
-  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·4절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함.</footer>`;
+  <footer><b>자료</b> ① (’19~’26년) 개선필요사업 등급추이(노란음영수정) xlsx → 1·2절 등급·분야·미흡횟수 ② (2026.10.12) 저성과 사업 개선사항 파악_부처별정리_261023수합본 hwp → 3·4절 지적·권고(1. 사업별 미흡판정 사유 및 개선권고) 및 이행조치·완료일(2. 개선권고별 이행조치 내용과 완료일). ③ 열린재정 재정사업평가결과(openfiscaldata.go.kr, ${esc(D.fiscal_meta?D.fiscal_meta.fetched_at:'')} 수집, ’19~’26 ${D.fiscal_rows}행) → 2절 타 재정사업평가제도 행(중소기업지원사업평가 제외), 세부사업명·소관 기준 결합. <b>표기</b> 연도는 평가 실시 연도(전년 실적 평가). 반복 지적은 연도 간 지적 제목·내용의 문자 2-gram 유사도 0.28 이상 또는 공통 핵심어로 자동 탐지한 후보이며 평가위원 확인을 전제로 함. <b>예시</b> '예시' 표식 항목은 수합본에 원문이 없는 사업의 서식 시연용 가상 문안으로 실제 평가보고서·부처 회신으로 교체 대상.</footer>`;
 }
 
 // ---- 사업 선택
@@ -308,7 +319,7 @@ const sel = document.getElementById('pick');
 const sorted = [...D.programs].sort((a,b)=> (a.ministry===b.ministry ? a.name.localeCompare(b.name,'ko') : a.ministry.localeCompare(b.ministry,'ko')));
 for(const p of sorted){
   const o = document.createElement('option'); o.value = p.id;
-  const tag = Object.keys(p.findings).length ? ' ●' : '';
+  const tag = Object.keys(p.findings).length ? (Object.values(p.findings).flat().some(f=>f.sample) ? ' ○' : ' ●') : '';
   o.textContent = `${p.ministry} · ${p.name}${tag}`; sel.appendChild(o);
 }
 const SAMPLE = '3612300'; // 중소벤처기업부 마케팅지원사업
