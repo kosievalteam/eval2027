@@ -253,15 +253,6 @@ function render(p){
     pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> ${chip(p.grade[y])} <span>${+y-1}년 실적 평가</span><span class="st"><span class="badge ${stCls}">${esc(st)}</span></span></div>${body}</div>`;
   }
   if(!lows.length) pairs = `<div class="empty">${Y0}~${Y1}년 평가에서 미흡·개선필요 판정 이력 없음.</div>`;
-  // ---- 판정 이후 예산 조치(부처 회신: ’27년 정부안 내역사업 증액·동액, 즉시폐지·이관)
-  const B = p.budget||[], AB = p.abolished||[];
-  if(B.length || AB.length){
-    const rowsB = B.map(b=>`<tr><td class="n">${esc(b.sub)}</td><td class="c">${esc(b.years)}</td><td class="c">${esc(b.b26)}</td><td class="c">${esc(b.b27)}</td><td class="t">${b.reason.map(esc).join('<br>')}</td></tr>`).join('');
-    const rowsA = AB.map(a=>`<tr><td class="n">${esc(a.sub)}</td><td class="c">${esc(a.years)}</td><td class="c">${esc(a.b26)}</td><td class="c"><span class="chip g-cut">폐지</span></td><td class="t">${a.status.map(esc).join('<br>')}</td></tr>`).join('');
-    pairs += `<div class="pair"><div class="yr"><span class="mono">’27 예산안</span> <span>판정 이후 예산 조치 · 내역사업 단위</span><span class="st"><span class="badge b-na">${esc(mn(p.ministry))} 회신</span></span></div>
-      <div class="bt"><table><thead><tr><th class="n">내역사업</th><th>평가연도</th><th>’26 예산</th><th>’27 예산안</th><th class="t">증액·동액 사유 / 폐지·이관 현황</th></tr></thead><tbody>${rowsB}${rowsA}</tbody></table></div>
-      <p class="note" style="padding:0 12px 10px">단위 백만원. 평가연도는 해당 내역사업이 속한 세부사업의 개선필요·미흡 판정 연도. 폐지 행의 ’27 예산안은 폐지(기능 이관 시 이관 사업명 기재).</p></div>`;
-  }
 
   // ---- 타 평가제도 평가보고서(일자리사업평가 등)의 종합의견·권고
   const OF = Object.entries(p.other_findings||{}).sort();
@@ -325,7 +316,6 @@ function render(p){
       <div class="kpi"><b>${realF.length}/${lows.filter(y=>hwpYears.includes(y)).length}</b><span>수합본 수록 저성과 연도 중 지적 원문 확보</span></div>
       <div class="kpi ${lows.some(y=>hwpYears.includes(y)) && !realA.length ? 'alert':''}"><b>${realA.length}건</b><span>이행조치 회신 연도</span></div>
     </div>
-    <p class="note">${fiscalNote(p)}</p>
   </section>
 
   <section>
