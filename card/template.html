@@ -118,7 +118,7 @@ a{color:var(--teal);font-weight:700;text-decoration:none} a:hover{text-decoratio
   <div class="toolbar">
     <label>표시 사업 <select id="pick" aria-label="사업 선택"></select></label>
     <a id="idx" href="index.html">전체 사업 목록</a>
-    <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안) · ● 원문 수합 ○ 예시 문안</span>
+    <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안)</span>
   </div>
 
   <article class="sheet" id="card"></article>
@@ -339,7 +339,7 @@ const sel = document.getElementById('pick');
 const sorted = [...D.programs].sort((a,b)=> (a.ministry===b.ministry ? a.name.localeCompare(b.name,'ko') : a.ministry.localeCompare(b.ministry,'ko')));
 for(const p of sorted){
   const o = document.createElement('option'); o.value = p.id;
-  const tag = Object.keys(p.findings).length ? (Object.values(p.findings).flat().some(f=>f.sample) ? ' ○' : ' ●') : '';
+  const tag = '';
   o.textContent = `${p.ministry} · ${p.name}${tag}`; sel.appendChild(o);
 }
 const SAMPLE = D.programs.some(x=>x.id==='3612300') ? '3612300' : D.programs[0].id; // 기본: 중소벤처기업부 마케팅지원사업
