@@ -1,0 +1,352 @@
+<title>소상공인재기지원 평가이력카드</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one A4-like sheet (max 960px) read top-down: 개요 → 등급추이 → 권고↔이행 대비 → 반복지적 → 확인사항 */
+:root{
+  /* KOSI CI 디자인 시스템 토큰 (DESIGN.md): 청록 한 축, 난색은 경고 앰버·하이라이트 노랑뿐 */
+  --paper:#f4f7f9; --sheet:#ffffff; --head:#f8fafc; --ink:#1f2a37; --ink-2:#63707e; --ink-3:#8a8d8f; --line:#e3e8ee; --line-2:#eef5f5;
+  --teal:#00646e; --teal-deep:#004a52; --teal-soft:#e2f0f0; --green:#00a56e; --navy:#173a6d; --navy-soft:#e2f0f0;
+  --bad:#b45309; --bad-soft:#fbeee2; --warn:#8a6100; --warn-soft:#fde68a; --ok:#1e7d3c; --ok-soft:#e8f7ee; --mid:#004a52; --mid-soft:#e2f0f0; --none:#b6bcc6;
+  --row-hover:#f8fbff; --row-sel:#eef7f7; --dim-bg:#f6f7f9; --dim-ink:#b6bcc6;
+  --r-sm:6px; --r-md:9px; --r-lg:12px; --r-xl:14px; --pill:999px;
+  --display:"KoPubWorldDotum","Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif; --body:"KoPubWorldDotum","Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif; --mono:"KoPubWorldDotum","Pretendard","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.5;margin:0;
+  padding-block:24px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;color:var(--ink-2);font-size:13px}
+.toolbar label{display:flex;gap:8px;align-items:center;min-width:0;flex:1 1 320px;white-space:nowrap;font-weight:700;font-size:11.5px}
+.toolbar select{flex:1 1 auto;min-width:0;max-width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--sheet);color:var(--ink)}
+.toolbar select:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.toolbar .proto{font-size:11.5px;font-weight:700;color:var(--ink-2)}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:var(--r-xl);padding:28px 32px;display:flex;flex-direction:column;gap:22px;min-width:0}
+@media (max-width:600px){.sheet{padding:18px 16px}}
+.head{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:end;border-bottom:2px solid var(--teal);padding-bottom:14px}
+.eyebrow{font-size:11.5px;color:var(--teal);font-weight:700}
+h1{font-family:var(--display);font-size:28px;line-height:1.15;margin:4px 0 0;font-weight:900;letter-spacing:-0.5px;text-wrap:balance}
+h1 small{display:block;font-family:var(--body);font-size:13px;font-weight:400;color:var(--ink-2);margin-top:4px}
+.stamp{text-align:right;font-size:12px;color:var(--ink-2);line-height:1.5}
+.stamp b{display:block;font-size:13px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+@media (max-width:600px){.head{grid-template-columns:1fr}.stamp{text-align:left}}
+h2{font-size:16px;margin:0;font-weight:800;display:flex;align-items:baseline;gap:10px;color:var(--ink)}
+h2 .n{font-size:12px;color:var(--teal);font-weight:800;font-variant-numeric:tabular-nums}
+h2 .hint{font-size:12px;font-weight:400;color:var(--ink-3);margin-left:auto}
+section{display:flex;flex-direction:column;gap:10px;min-width:0}
+/* 개요 */
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.meta div{padding:8px 12px;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2);min-width:0}
+.meta div:nth-child(4n){border-right:0}
+.meta dt{font-size:11.5px;color:var(--ink-2);font-weight:700}
+.meta dd{margin:2px 0 0;font-weight:500;overflow-wrap:anywhere}
+.meta dd.mono{font-weight:700;font-size:13px;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.meta{grid-template-columns:repeat(2,minmax(0,1fr))}.meta div:nth-child(2n){border-right:0}}
+/* 등급 추이 */
+.trend{overflow-x:auto}
+.trend table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
+.trend th,.trend td{padding:7px 6px;text-align:center;border-bottom:1px solid var(--line-2);font-size:13px}
+.trend th{font-weight:700;color:var(--ink-2);font-size:11.5px;background:var(--head);font-variant-numeric:tabular-nums}
+.trend th.row,.trend td.row{text-align:left;color:var(--ink-2);font-family:var(--body);font-weight:500;width:9.5em;white-space:nowrap}
+.trend td.field{font-size:12px;color:var(--ink-3)}
+.chip{display:inline-block;min-width:4.2em;padding:3px 10px;border-radius:var(--pill);font-size:12px;font-weight:700;line-height:1.4;border:1px solid transparent}
+.g-bad{background:var(--bad-soft);color:var(--bad)}
+.g-ok{background:var(--ok-soft);color:var(--ok)}
+.g-mid{background:var(--mid-soft);color:var(--mid)}
+.g-warn{background:var(--warn-soft);color:var(--ink)}
+.g-none{color:var(--dim-ink);border:1px dashed var(--dim-ink);background:var(--dim-bg);font-weight:400}
+.g-wait{color:var(--ink-3);border:1px dashed var(--line);background:transparent;font-weight:400}
+.g-cut{background:var(--bad);color:#fff}
+.banner{border:1px solid var(--line);background:var(--warn-soft);color:var(--ink);border-radius:var(--r-md);padding:8px 12px;font-size:12.5px;line-height:1.6}
+.banner b{color:var(--ink);font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.kpi{border-left:3px solid var(--teal);padding:4px 12px;min-width:0}
+.kpi b{display:block;font-size:22px;font-weight:900;color:var(--navy);line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:var(--ink-2)}
+.kpi.alert{border-left-color:var(--bad)}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.note{font-size:12px;color:var(--ink-3);line-height:1.6}
+.note b{color:var(--ink-2);font-weight:500}
+/* 권고 ↔ 이행 */
+.pair{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.pair .yr{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:8px 12px;background:var(--navy-soft);font-weight:700;font-size:13px}
+.pair .yr .mono{font-weight:800;color:var(--teal);font-variant-numeric:tabular-nums}
+.pair .yr .st{margin-left:auto;font-weight:500;font-size:12px}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cols>div{padding:10px 12px;min-width:0}
+.cols>div+div{border-left:1px solid var(--line-2)}
+.cols .lab{font-size:11.5px;font-weight:700;color:var(--ink-2);margin-bottom:4px}
+.item+.item{border-top:1px dashed var(--line-2);margin-top:8px;padding-top:8px}
+.item .t{font-weight:700}
+.item .k{color:var(--teal-deep);font-size:12px;font-weight:700;margin-right:4px}
+.item p{margin:2px 0;font-size:13px;overflow-wrap:anywhere}
+.item .sub{margin:2px 0 0 1em;font-size:12.5px;color:var(--ink-2)}
+.item .sub::before{content:"- ";color:var(--ink-3)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--r-sm);font-weight:700;vertical-align:1px;margin-left:6px}
+.b-done{background:var(--ok-soft);color:var(--ok)} .b-plan{background:var(--warn-soft);color:var(--warn)} .b-none{background:var(--bad-soft);color:var(--bad)} .b-rep{background:var(--bad);color:#fff} .b-smp{background:var(--warn-soft);color:var(--ink)} .b-na{background:var(--mid-soft);color:var(--mid)}
+.empty{color:var(--ink-2);font-size:13px;border:1px dashed var(--line);border-radius:var(--r-md);padding:10px 12px;line-height:1.6;background:var(--dim-bg)}
+.bt{overflow-x:auto;padding:6px 12px 0}
+.bt table{border-collapse:collapse;width:100%;min-width:640px;font-size:12.5px}
+.bt th,.bt td{padding:6px 8px;border-bottom:1px solid var(--line-2);text-align:center;vertical-align:top}
+.bt th{font-size:11.5px;font-weight:700;color:var(--ink-2);background:var(--head)}
+.bt th.n,.bt td.n,.bt th.t,.bt td.t{text-align:left}
+.bt td.c{white-space:nowrap;font-variant-numeric:tabular-nums}
+.bt td.t{font-size:12px;color:var(--ink-2);min-width:16em}
+.empty b{color:var(--ink-2);font-weight:500}
+.cols.hdr>div{padding-bottom:2px}
+.cols.prow{border-top:1px dashed var(--line-2)}
+.cols.prow>div{padding-top:8px;padding-bottom:8px}
+.cols.prow .item{margin:0;padding:0;border:0}
+.no{display:inline-block;min-width:1.4em;font-size:11px;font-weight:700;color:var(--teal-deep);background:var(--teal-soft);border-radius:var(--r-sm);text-align:center;margin-right:6px;vertical-align:1px;font-variant-numeric:tabular-nums}
+@media (max-width:640px){.cols{grid-template-columns:1fr}.cols>div+div{border-left:0;border-top:1px solid var(--line-2)}.cols.prow>div+div{border-top:1px dotted var(--line-2)}}
+/* 반복 지적 */
+.rep{border:1px solid var(--bad);border-radius:var(--r-lg);padding:10px 12px;display:flex;flex-direction:column;gap:8px;background:var(--bad-soft)}
+.rep .r{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:4px 10px;font-size:13px}
+.rep .r .y{color:var(--bad);font-size:12px;font-weight:700;padding-top:2px;font-variant-numeric:tabular-nums}
+.rep .r p{margin:0;overflow-wrap:anywhere}
+/* 확인사항 */
+.check{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.check li{display:grid;grid-template-columns:1.3em minmax(0,1fr);gap:8px;font-size:13.5px}
+.check li::before{content:"□";color:var(--navy);font-size:15px;line-height:1.3}
+.check .ex{display:block;color:var(--ink-2);font-size:12.5px;margin-top:2px}
+.check .ex::before{content:"○ ";color:var(--ink-3)}
+footer{border-top:1px solid var(--line);padding-top:10px;font-size:11.5px;color:var(--ink-3);line-height:1.7}
+footer b{color:var(--ink-2);font-weight:500}
+a{color:var(--teal);font-weight:700;text-decoration:none} a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+</style>
+
+<div class="wrap">
+  <div class="toolbar">
+    <label>표시 사업 <select id="pick" aria-label="사업 선택"></select></label>
+    <a id="idx" href="index.html">전체 사업 목록</a>
+    <span class="proto">PROTOTYPE · 2026-10-25 · 계속평가 사업 평가이력제(안)</span>
+  </div>
+
+  <article class="sheet" id="card"></article>
+</div>
+
+<script id="data" type="application/json">{"years":["2020","2021","2022","2023","2024","2025","2026"],"programs":[{"id":"3633100","ministry":"중소벤처기업부","fund":"기금","name":"소상공인재기지원","start":"2015","end":"계속","budget_code":"4131-319","field":{"2020":null,"2021":"소상공인","2022":null,"2023":"소상공인","2024":"소상공인","2025":"소상공인","2026":"회복"},"grade":{"2020":null,"2021":"보통","2022":null,"2023":"보통","2024":"보통","2025":"개선필요","2026":"개선필요"},"first_low":2025,"low_count":2,"exclude":null,"findings":{"2025":[{"title":"중도 이탈자 관리 부족","issue":"'24년 성과지표는 목표를 초과 달성(109%)했으나 지원 이후 취업·재창업으로 연결되지 않고 중도 이탈하는 사례가 존재하고 탈락자·이탈자 사후관리가 부족","recommend":"이탈 사유 분석과 재참여 유도 방안(심리·재도전 교육 등 연계 프로그램 신설) 마련 등 사업관리 강화","detail":[]},{"title":"권역별 지원 편차","issue":"6개 권역별 지원 인프라와 전문인력(컨설턴트) 배치에 차이가 있어 지원 형평성 저해 우려","recommend":"권역별 지원수요 파악을 기반으로 한 자원배치 등 전략 수립","detail":[]},{"title":"성과 입증 보완","issue":"실적기반 비율 산정은 타당하나 추적관리·정성평가가 부족하고, 예산이 지속 증액되는 가운데 투입 대비 성과 향상 여부가 확인되지 않음","recommend":"추적관리·정성평가 보완 및 예산 투입 대비 성과 검토","detail":[]},{"title":"고용보험료 지원 비율 격차","issue":"일부 지역은 자영업자 고용보험료 자부담률이 0%가 되는 등 지역 간 격차가 커질 우려가 있고 고용보험 재정 전망에도 부정적 영향 가능","recommend":"지역별 적정 수준의 지원 비율 검토","detail":[]},{"title":"인지도·우수사례 확산","issue":"사업 인지도와 성과 확산 노력이 부족","recommend":"우수 재기사례 공모전·공유 플랫폼 구축, 로컬 브랜드화 등 성공사례 기반 지역 특화모델 확대","detail":[]}],"2026":[{"title":"정책 도달 범위 점검","issue":"폐업 소상공인의 정책수요 대비 재기지원의 도달 범위 충분성이 확인되지 않음","recommend":"재기지원 도달 범위에 대한 추가 점검","detail":[]},{"title":"제도인지도·상담품질","issue":"폐업 지원제도 인지도 부족으로 제도 활용에 제약이 있고, 담당자 연결·소통 어려움과 철거비용 기준·철거업체 수수료 관련 의견이 제기","recommend":"정책홍보·신청 안내 체계 강화, 상담 품질 개선과 철거업체 관리 검토","detail":[]},{"title":"질적·지속성과지표 보완","issue":"현 지표는 해당연도 측정치(취업성공률·재창업성공률)로 지원 이후의 지속성을 포착하지 못하고, 희망리턴패키지 내역사업 지표가 부족","recommend":"취업 유지율·재창업 후 생존율·매출 유지율 등 질적·지속 성과지표 보완, 내역사업 성과지표 발굴","detail":[]},{"title":"고용보험료 지원비율 적정성","issue":"지자체 지원과 결합될 경우 일부 구간에서 자부담이 낮아질 수 있고 '24년 국회에서도 적정 지원비율 재검토 필요성이 제기","recommend":"신규 지원자 등에 대한 지원비율 적정성 점검, 고용보험료 사전차감 부과 방식 전환 관련 검토 지속","detail":[]}]},"actions":{"2025":[{"action":"민간 위탁기관을 통해 중도 이탈자(서류제출 미비 등) 대상 재참여 유도 상담·안내 강화(‘26.3월)","done":"‘26.3월","detail":[]},{"action":"지역별 소상공인 사업체 수 분포를 근거(국세통계 및 기업생멸행정통계)로 6개 권역별(8개 기관) 지원 목표 안배(‘25.12월)","done":"‘25.12월","detail":[]},{"action":"워크숍·성과공유회·유공자 포상 등을 통해 우수 사례 적극 발굴·공유(~‘26.12, 보도자료 13건, 기획기사 6건, 유튜브 15건(우수사례 9건, 사업소개·홍보 6건), 방송 16회 등 홍보 실시)","done":"","detail":[]}],"2026":[{"action":"폐업 지원제도 인지도 향상 및 상담 품질 개선","done":"","detail":["→ 다양한 홍보매체(유튜브·방송 등)와 성과공유회 등을 통해 사업 성과 확산 및 정책 인지도 제고(~`26.12월)","→ 소상공인 종합상담 거점(소상공인 새출발지원센터) 대폭 확대(’26.1, 전국 30개소→80개소) 및 재기지원 상담 시 복합상담(채무조정·서민금융) 연계(연중)"]},{"action":"희망리턴패키지 성과지표 보완","done":"","detail":["→ 기존 성과지표(취업 성공률, 재창업 성공률) 외에 재창업 후 생존율 추적 관리를 보조지표로 활용하여 재기지원 성과 관리 체계 강화 검토(’27~)"]}]},"fiscal":{"2021":[{"system":"중소기업지원사업평가","result":"보통","type":"-","ministry":"중소벤처기업부","account":"소상공인시장진흥기금","program":"소상공인·전통시장지원","src_name":"소상공인재기지원"}],"2023":[{"system":"중소기업지원사업평가","result":"보통","type":"-","ministry":"중소벤처기업부","account":"소상공인시장진흥기금","program":"소상공인·전통시장지원","src_name":"소상공인재기지원"}],"2024":[{"system":"중소기업지원사업평가","result":"보통","type":"-","ministry":"중소벤처기업부","account":"소상공인시장진흥기금","program":"소상공인·전통시장지원","src_name":"소상공인재기지원"}],"2025":[{"system":"중소기업지원사업평가","result":"개선","type":"-","ministry":"중소벤처기업부","account":"소상공인시장진흥기금","program":"소상공인·전통시장지원","src_name":"소상공인재기지원"}],"2026":[{"system":"통합재정사업평가","result":"사업개선","type":"보조사업,일자리,중소기업","ministry":"중소벤처기업부","account":"소상공인시장진흥기금","program":"소상공인·전통시장지원","src_name":"소상공인재기지원"},{"system":"일자리사업평가","result":"개선필요","type":"창업지원","ministry":"중소벤처기업부","account":"평가보고서","program":"5.창업지원","src_name":"소상공인재기지원(희망리턴패키지(재기사업화지원))"},{"system":"일자리사업평가","result":"양호","type":"실업소득유지및지원","ministry":"중소벤처기업부","account":"평가보고서","program":"6.실업소득유지 및 지원","src_name":"소상공인재기지원"}]},"budget":[{"ministry":"중소벤처기업부","name":"소상공인재기지원","sub":"손실보상한시지원","years":"2025·2026","b26":"8,800","b27":"32,900","reason":["ㅇㅇㅇ"],"items":null,"matched":"3633100"},{"ministry":"중소벤처기업부","name":"소상공인재기지원","sub":"회복상담·채무조정제도운영","years":"2025·2026","b26":"4,569","b27":"4,569","reason":[""],"items":null,"matched":"3633100"},{"ministry":"중소벤처기업부","name":"소상공인재기지원","sub":"희망리턴패키지","years":"2025·2026","b26":"305,550","b27":"315,300","reason":[""],"items":null,"matched":"3633100"},{"ministry":"중소벤처기업부","name":"소상공인재기지원","sub":"소상공인사회보험료지원","years":"2025·2026","b26":"15,312","b27":"24,129","reason":[""],"items":null,"matched":"3633100"}],"other_findings":{"2026":[{"system":"일자리사업평가","grade":"개선필요","grade_raw":"개선필요","sub":"희망리턴패키지(재기사업화지원)","job_type":"창업지원","sub_type":"","summary":["사업경쟁력이 확보된 소상공인의 성공적인 재창업 및 업종전환을 목적으로 하는 동 사업은 주관기관 선정·운영을 통해 폐업(예정) 소상공인을 대상으로 [1] 재무·상권 분석 등의 필수 사전교육 및 마케팅‧홍보 등의 실전 교육으로 구성된‘재창업 교육’, [2] 교육·전담 PM 멘토링·자금지원으로 구성된‘재기사업화’를 패키지 방식의 1:1 밀착형으로 지원한다는 점에서 의의가 매우 큼 전 세계적인 저성장 기조와 경제위기 국면에 가장 빠르게 영향받는 소상공인 폐업 이슈와‘준비되지 않은 재창업으로 인한 회전문 창업’문제를 구조적으로 완화","사업의 실효성 제고를 목표로 작년의 권고사항을 반영한 최근의 운영체계 변화 역시 전반적으로 시의적절 주관 운영기관 수 축소, 재창업교육과 재기사업화 연계 강화, 성과 증진을 위한 인센티브 강화 등","하지만 사업 참여자의 수의 대폭 감소는 기대할 수 있는 일자리 관련 성과는 물론 사업의 목적 및 취지를 크게 제약 사업 참여자 수: ’24년 5,342명 → ’25년 4,056명","더불어 1:1 전담PM 코칭 및 밀착 멘토링, 교육 및 멘토링 강사의 전문성, 과거 실패 및 현실 역량에 대한 정확한 진단, 철저한 상권 분석 등 동 사업의 차별화된 특징에 대한 현장의 공통적인 문제 제기는 저조한 사업 만족도를 넘어 최하위 수준의 일자리 성과로 귀결되고 있는 양상 동 사업의 지속고용사업장 및 고용창출기업 비율: 40.9%, 16.9% 창업지원사업의 지속고용사업장 비율 및 고용창출기업 비율 평균: 70.3%, 74.7%"],"items":[{"title":"사업 참여자 수 확충·확대 방안의 모색이 긴요","detail":["소상공인 재기지원 사업의 취지를 고려할 때, 사업 참여자 수의 확충·확대가 그 무엇보다 중요한 과제인만큼, 현재의 홍보 노력을 넘어선 다각도의 사업 참여 독려 방안이 절실"]},{"title":"동 사업의 대표적 특장점인 1:1 전담PM 코칭 및 밀착 멘토링의 내실화 역시 요구됨","detail":["이를 위해 사업 참여자 수 대비 크게 부족한 전담PM 및 전담인력의 수를 확충할 수 있는 방안 모색이 무엇보다 절실"]},{"title":"소상공인 재창업에 전문성을 보유한 강사의 교육 및 멘토링, 철저한 상권 분석, 과거 실패에 대한 정확한 원인 진단에 기초한 소상공인의 재창업 지원 또한 긴요","detail":[]},{"title":"정책 대상만 다른‘중소기업 재기지원’사업을 참고하거나 연계하여, 소상공인에 특화된 차별화된 사업을 고민하고 소상공인이 중소기업으로 성장할 수 있는 방안을 모색할 필요","detail":[]},{"title":"사업 고유의 특성 및 당해 연도 성과를 반영하는 특성화 지표의 발굴과 해당 지표를 평가·환류에 고려하는 운영체계 또한 권고","detail":[]}],"file":"(창업지원) 13 (중기부)평가보고서_소상공인재기지원(희망리턴패키지(재기사업화지원)).hwpx"},{"system":"일자리사업평가","grade":"양호","grade_raw":"양호","sub":"","job_type":"실업소득유지및지원","sub_type":"","summary":["소상공인재기지원사업은 자영업자 고용보험 제도의 저변 확대에 실질적으로 기여하고 있으며, 중기부의 소상공인 정책 전문성과 네트워크 측면의 비교우위가 효과적으로 발현되고 있다고 판단됨 소상공인 대상 정책 인지도를 제고하고 신청주의 전달체계를 개선하였으며, 지자체의 재정지원을 유도하는 측면에서 긍정적 성과를 거두고 있음"],"items":[{"title":"(중기부 단독) 공단의 소상공인 대상 중기부 및 공단의 타사업과의 연계성을 강화하는 방안을 마련할 필요 존재","detail":["소상공인 대상의 여러 사업에의 신청·선정 결과를 토대로, 자영업자 실업급여 적용 우선 대상자 범위 판별이 가능할 수 있음","소상공인 관련 타정책 홍보시 자영업자 고용보험 제도의 인지도도 같이 제고할 수 있음","정책간 유사·중복성 외에, 정책의 사각지대 판별도 가능함"]},{"title":"(중기부-노동부 연계) 중기부는 노동부와 공통으로 다음의 사항에 초점을 맞추는 것을 제안함","detail":["① 지자체의 자영업자 고용보험 재정 기여 방식을 체계화하고, 고용노동부는 장기적으로 지자체의 고용보험료 지원 방식을 근로자·노무제공자 등 他자격 형태에도 적용하는 방안 검토 필요","② 소상공인의 폐업 후 경제활동 복귀 경로, 업종별·연령별 재기 성공률, 고용보험 수급 이후 노동시장 정착 여부 등을 측정할 수 있는 성과 지표를 고용노동부와 중기부가 공동으로 개발하고 관리함으로써 사업의 실효성을 제고하는 방향을 검토할 필요","③ 현행 사후지원 방식에서 차감부과 방식으로의 전환을 검토하되, 두루누리 사회보험료 지원사업의 정산 주기가 분기·반기 단위로 개편되면 이에 맞추어 동일한 주기를 따르는 것이 적절"]}],"file":"(실업소득유지및지원) 11 (중기부) 소상공인재기지원.hwpx"}]},"abolished":[]}],"fiscal_meta":{"source":"https://www.openfiscaldata.go.kr/op/ko/br/UOPKOBRA03","endpoint":"https://www.openfiscaldata.go.kr/op/ko/br/selectPgrvRsltList.do","fetched_at":"2026-10-25","years":["2019","2020","2021","2022","2023","2024","2025","2026"]},"fiscal_rows":7086,"coverage":{"default":["2023","2024","2025"],"중소벤처기업부":["2023","2024","2025","2026"]},"jobs_meta":{"year":"2026","source":"재정지원 일자리사업 평가보고서(사업별 HWP)","count":161},"single":true}</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const YEARS = D.years;                       // 표시 연도(build_card.py --from, 기본 2020~)
+const Y0 = YEARS[0], Y1 = YEARS[YEARS.length-1];
+const NOW = {y:2026, m:10};
+const LOW = new Set(['미흡','개선필요','감액']);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const gradeClass = g => !g ? 'g-none' : g==='감액' ? 'g-cut' : LOW.has(g) ? 'g-bad' : g==='우수' ? 'g-ok' : 'g-mid';
+const chip = g => `<span class="chip ${gradeClass(g)}">${g ? esc(g) : '미평가'}</span>`;
+
+// 완료일 문자열 "’24.2월" → {y,m}
+function parseDone(s){ s=s||''; let m = /(\d{2})\.\s*(\d{1,2})월?/.exec(s); if(m) return {y:2000+ +m[1], m:+m[2]};
+  m = /[’‘'`]?(\d{2})\s*~/.exec(s); return m ? {y:2000+ +m[1], m:1} : null; }                 // (’24.2월) (~‘26.12) (‘25~)
+function doneBadge(s){
+  const d = parseDone(s);
+  if(!d) return '<span class="badge b-na">완료일 미기재</span>';
+  const future = d.y > NOW.y || (d.y===NOW.y && d.m > NOW.m);
+  return `<span class="badge ${future?'b-plan':'b-done'}">${future?'이행 예정':'이행 완료'} ${esc(s)}</span>`;
+}
+// 문자 2-gram 유사도(교집합/작은 집합)
+function bigrams(s){ s=(s||'').replace(/[\s·,.()'’‘"“”\-]/g,''); const S=new Set(); for(let i=0;i<s.length-1;i++) S.add(s.slice(i,i+2)); return S; }
+function sim(a,b){ const A=bigrams(a),B=bigrams(b); if(!A.size||!B.size) return 0; let n=0; A.forEach(x=>{ if(B.has(x)) n++; }); return n/Math.min(A.size,B.size); }
+const KEYS = ['성과지표','집행률','집행','만족도','지원대상','수요','부정수급','환류','목표치','유사·중복','중복','사후관리','선별','선정기준'];
+function keyOf(t){ return KEYS.find(k => (t||'').includes(k)); }
+// 연도 간 반복 지적 탐지
+function repeats(p){
+  const ys = Object.keys(p.findings).sort(); const out=[];
+  for(let i=0;i<ys.length;i++) for(let j=i+1;j<ys.length;j++){
+    for(const a of p.findings[ys[i]]) for(const b of p.findings[ys[j]]){
+      const s = sim(a.title+' '+a.issue, b.title+' '+b.issue);
+      const ka = keyOf(a.title), kb = keyOf(b.title);
+      if(s>=0.28 || (ka && ka===kb)) out.push({y1:ys[i],y2:ys[j],a,b,key:ka||kb||'', s});
+    }
+  }
+  return out;
+}
+// 열린재정 재정사업평가결과 표기 → 색상
+const FIS_BAD = new Set(['미흡','개선','개선필요','감액','폐지']), FIS_WARN = new Set(['사업개선']), FIS_OK = new Set(['우수','양호','정상추진']);
+const fisClass = r => FIS_BAD.has(r) ? 'g-bad' : FIS_WARN.has(r) ? 'g-warn' : FIS_OK.has(r) ? 'g-ok' : 'g-mid';
+const fisChip = recs => !recs || !recs.length ? '<span class="chip g-none">미수록</span>'
+  : recs.map(r=>`<span class="chip ${fisClass(r.result)}" title="${esc(r.system)} · ${esc(r.src_name)}${r.type&&r.type!=='-'?' · '+esc(r.type):''}">${esc(r.result)}</span>`).join(' ');
+// 열린재정 '개선' 표기는 '개선필요'에 해당
+const sameGrade = (g, r) => { const m = {'개선':'개선필요'}; return (g||'').trim() === (m[r]||r); };
+function fiscalRows(p){
+  // 타 재정사업평가제도: 본 평가(중소기업지원사업평가)는 제외
+  const systems = []; YEARS.forEach(y => (p.fiscal[y]||[]).forEach(r => { if(r.system!=='중소기업지원사업평가' && !systems.includes(r.system)) systems.push(r.system); }));
+  if(!systems.length) return `<tr><td class="row">타 재정사업평가제도<br><span class="note">열린재정 미수록</span></td>${YEARS.map(()=>'<td><span class="chip g-none">미수록</span></td>').join('')}</tr>`;
+  return systems.map((sy,i) => `<tr><td class="row">${i===0?'타 재정사업평가제도':''}<br><span class="note">${esc(sy)}</span></td>${YEARS.map(y => `<td>${fisChip((p.fiscal[y]||[]).filter(r=>r.system===sy))}</td>`).join('')}</tr>`).join('');
+}
+function fiscalCheck(p){
+  const out = {same:[], diff:[]};
+  YEARS.forEach(y => { const g = p.grade[y]; const recs = (p.fiscal[y]||[]).filter(r=>r.system==='중소기업지원사업평가'); if(!g || !recs.length) return;
+    (recs.some(r=>sameGrade(g,r.result)) ? out.same : out.diff).push({y, g, f: recs.map(r=>r.result).join('/')}); });
+  return out;
+}
+function fiscalNote(p){
+  const c = fiscalCheck(p), fy = YEARS.filter(y=>(p.fiscal[y]||[]).length);
+  if(!fy.length) return `타 재정사업평가제도 행은 열린재정 재정사업평가결과(’19~’26, ${D.fiscal_rows}행) 기준이며, 동일 세부사업명을 찾지 못함. 사업명 변경·통폐합 여부 확인 필요.`;
+  const ty = [...new Set(YEARS.flatMap(y=>(p.fiscal[y]||[]).filter(r=>r.system==='통합재정사업평가').map(r=>r.type)).filter(t=>t&&t!=='-'))];
+  const jb = YEARS.flatMap(y=>(p.fiscal[y]||[]).filter(r=>r.account==='평가보고서').map(r=>`${y} ${r.system} ${r.result}`));
+  let s = `타 재정사업평가제도 행은 열린재정 재정사업평가결과(수록 ${fy[0]}~${fy[fy.length-1]}년) 중 본 평가(중소기업지원사업평가)를 제외한 제도별 결과`;
+  if(c.same.length+c.diff.length) s += ` · 열린재정 수록 중소기업지원사업평가 결과와 본 등급 ${c.same.length+c.diff.length}개 연도 대조 → 일치 ${c.same.length}건`;
+  s += c.diff.length ? `, <b>불일치 ${c.diff.length}건(${c.diff.map(d=>`${d.y}: 본 등급 ${d.g} / 열린재정 ${d.f}`).join('; ')})</b>` : '';
+  if(ty.length) s += ` · 2026년 통합재정사업평가 유형: ${ty.join(', ')}`;
+  if(jb.length) s += ` · 평가보고서에서 추출(열린재정 미공개): ${jb.join(', ')}`;
+  return s + '. 열린재정의 ‘개선’은 ‘개선필요’ 표기이며, 한 연도에 복수 표기는 사업명 변경 전후 또는 중복 수록분.';
+}
+function lowYears(p){ return YEARS.filter(y => LOW.has(p.grade[y])); }
+function consecutive(p){ const r=[]; for(let i=1;i<YEARS.length;i++){ if(LOW.has(p.grade[YEARS[i]]) && LOW.has(p.grade[YEARS[i-1]])) r.push(`${YEARS[i-1]}→${YEARS[i]}`);} return r; }
+
+function render(p){
+  const lows = lowYears(p); const evalYears = YEARS.filter(y=>p.grade[y]);
+  const lastLow = lows.length ? lows[lows.length-1] : null;
+  const cons = consecutive(p);
+  const reps = repeats(p);
+  const fieldNow = [...YEARS].reverse().map(y=>p.field[y]).find(Boolean) || '-';
+  const fieldHist = [...new Set(YEARS.map(y=>p.field[y]).filter(Boolean))];
+  const mn = m => (m||'').replace(/\s*\(.*?\)\s*/g,'').trim();
+  const hwpYears = ((D.coverage||{})[mn(p.ministry)]) || (D.coverage||{}).default || ['2023','2024','2025'];
+  const covTxt = `’${hwpYears[0].slice(2)}~’${hwpYears[hwpYears.length-1].slice(2)}`;
+
+  const realF = Object.keys(p.findings).filter(y=>!p.findings[y].some(f=>f.sample));
+  const realA = Object.keys(p.actions).filter(y=>!p.actions[y].some(a=>a.sample));
+  const hasSample = Object.values(p.findings).flat().some(f=>f.sample);
+
+  // ---- 권고 ↔ 이행 블록(저성과 연도별)
+  let pairs = '';
+  for(const y of lows){
+    const F = p.findings[y] || [], A = p.actions[y] || [];
+    const hasF = F.length>0, hasA = A.length>0;
+    const isSample = F.some(f=>f.sample) || A.some(a=>a.sample);
+    let st, stCls;
+    if(isSample) { st=`예시 문안 · 권고 ${F.length}건${hasA?` · 이행조치 ${A.length}건`:' · 이행조치 없음'}`; stCls='b-smp'; }
+    else if(hasF && hasA) { st=`권고 ${F.length}건 · 이행조치 ${A.length}건 회신`; stCls='b-done'; }
+    else if(hasF) { st='이행조치 미회신'; stCls='b-none'; }
+    else if(!hwpYears.includes(y)) { st=`수합본 범위 외(${covTxt} 평가분만 수합)`; stCls='b-na'; }
+    else { st='평가보고서 원문·이행조치 미수합'; stCls='b-none'; }
+    let body;
+    if(!hasF){
+      body = `<div class="cols"><div><div class="lab">${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])})</div>
+        <div class="empty"><b>지적·권고 원문 미입력.</b> ${hwpYears.includes(y)
+          ? `${esc(p.ministry)} 회신분이 수합본(’26.10.23)에 포함되지 않아 공란. ${y}년 평가보고서의 (지적)·(권고) 문단을 이 칸에 전재하면 우측 이행실적과 자동 대비.`
+          : `${y}년 평가분은 수합 대상 연도(${covTxt})가 아님. 평가보고서 DB 연계 시 자동 채움 대상.`}</div></div>
+        <div><div class="lab">${+y}년 이후 이행실적 (완료일)</div>
+        <div class="empty"><b>이행조치 미회신.</b> 부처 이행조치 회신 시 권고 항목 순서대로 대비 표시.</div></div></div>`;
+    } else {
+      const paired = hasA && A.length===F.length;   // 부처 회신이 권고 순서대로 같은 건수면 항목별 행 대응
+      const no = i => paired ? `<span class="no">${i+1}</span>` : '';
+      const fitem = (f,i) => `<div class="item"><p class="t">${no(i)}${esc(f.title)}${f.sample?' <span class="badge b-smp">예시</span>':''}</p>
+        ${f.issue?`<p><span class="k">(지적)</span>${esc(f.issue)}</p>`:''}
+        ${f.recommend?`<p><span class="k">(권고)</span>${esc(f.recommend)}</p>`:''}
+        ${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
+      const act = (a,i) => `<div class="item"><p class="t">${no(i)}${esc(a.action)}${a.sample?' <span class="badge b-smp">예시</span>':''}${doneBadge(a.done)}</p>${a.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`;
+      const labF = `${+y-1}년 실적 평가 지적·권고 (${y}년 ${esc(p.grade[y])}) · ${F.length}건`, labA = `${+y}년 이후 이행실적 (완료일)${hasA?` · ${A.length}건`:''}`;
+      if(paired){
+        const done = A.filter(a=>{const d=parseDone(a.done); return d && !(d.y>NOW.y || (d.y===NOW.y && d.m>NOW.m));}).length;
+        body = `<div class="cols hdr"><div><div class="lab">${labF}</div></div><div><div class="lab">${labA} · 완료 ${done}/${A.length}</div></div></div>`
+             + F.map((f,i)=>`<div class="cols prow"><div>${fitem(f,i)}</div><div>${act(A[i],i)}</div></div>`).join('');
+      } else {
+        const rowsF = F.map(fitem).join('');
+        const rowsA = hasA ? A.map(act).join('') + `<p class="note" style="margin-top:8px">권고 ${F.length}건과 이행조치 ${A.length}건의 건수가 달라 순서 대비가 아닌 일괄 제시.</p>`
+                          : `<div class="empty"><b>이행조치 미회신.</b> ${esc(p.ministry)}가 수합본(’26.10.23)에 ${y}년 권고에 대한 이행조치를 제출하지 않음. 평가위원은 금년 자체평가보고서의 개선 노력 기술로 대체 확인 필요.</div>`;
+        body = `<div class="cols"><div><div class="lab">${labF}</div>${rowsF}</div><div><div class="lab">${labA}</div>${rowsA}</div></div>`;
+      }
+    }
+    pairs += `<div class="pair"><div class="yr"><span class="mono">${y}</span> ${chip(p.grade[y])} <span>${+y-1}년 실적 평가</span><span class="st"><span class="badge ${stCls}">${esc(st)}</span></span></div>${body}</div>`;
+  }
+  if(!lows.length) pairs = `<div class="empty">${Y0}~${Y1}년 평가에서 미흡·개선필요 판정 이력 없음.</div>`;
+
+  // ---- 타 평가제도 평가보고서(일자리사업평가 등)의 종합의견·권고
+  const OF = Object.entries(p.other_findings||{}).sort();
+  let otherHtml = '';
+  for(const [y,recs] of OF) for(const r of recs){
+    const sm = r.summary.map(s=>`<p class="sub">${esc(s)}</p>`).join('');
+    const it = r.items.map(f=>`<div class="item"><p class="t">${esc(f.title)}</p>${f.detail.map(d=>`<p class="sub">${esc(d)}</p>`).join('')}</div>`).join('');
+    const meta = [r.sub && r.sub!==p.name ? `내역 ${esc(r.sub)}` : '', r.job_type ? esc(r.job_type)+(r.sub_type?'/'+esc(r.sub_type):'') : ''].filter(Boolean).join(' · ');
+    otherHtml += `<div class="pair"><div class="yr"><span class="mono">${y}</span> <span class="chip ${fisClass(r.grade)}">${esc(r.grade)}</span> <span>${esc(r.system)} · ${+y-1}년 실적${meta?' · '+meta:''}</span><span class="st"><span class="badge b-na">평가보고서 원문</span></span></div>
+      <div class="cols"><div><div class="lab">종합의견</div>${sm||'<div class="empty">종합의견 없음</div>'}</div><div><div class="lab">제도개선 권고 · ${r.items.length}건</div>${it||'<div class="empty">권고 없음</div>'}</div></div></div>`;
+  }
+  if(!otherHtml) otherHtml = `<div class="empty">타 재정사업평가의 평가보고서 원문이 결합된 연도 없음. 등급만 공개된 제도(열린재정)는 2절 행을 참조.</div>`;
+
+  // ---- 반복 지적
+  let repHtml;
+  const repItems = [];
+  for(const r of reps) repItems.push(`<div class="r"><span class="y">${r.y1} → ${r.y2}</span><p><b>${esc(r.a.title)}</b> → <b>${esc(r.b.title)}</b>${r.key?` <span class="badge b-rep">반복 · ${esc(r.key)}</span>`:' <span class="badge b-rep">반복</span>'}${(r.a.sample||r.b.sample)?' <span class="badge b-smp">예시</span>':''}<br><span style="color:var(--ink-2);font-size:12.5px">${esc(r.b.issue||'')}</span></p></div>`);
+  { const allF = Object.entries(p.findings).flatMap(([fy,F])=>F.filter(f=>!f.sample).map(f=>({fy,f})));
+    for(const [y,recs] of OF) for(const r of recs) for(const it of r.items) for(const {fy,f} of allF){
+      const s = sim(f.title+' '+f.issue, it.title+' '+(it.detail[0]||'')); const ka=keyOf(f.title), kb=keyOf(it.title+' '+(it.detail[0]||''));
+      if(s>=0.28 || (ka && ka===kb)) repItems.push(`<div class="r"><span class="y">${fy} → ${y}</span><p><b>${esc(f.title)}</b> → <b>${esc(it.title)}</b> <span class="badge b-rep">교차 · ${esc(r.system)}${(ka||kb)?' · '+esc(ka||kb):''}</span><br><span style="color:var(--ink-2);font-size:12.5px">${esc((it.detail[0]||'').slice(0,160))}</span></p></div>`);
+    } }
+  for(const c of cons) repItems.push(`<div class="r"><span class="y">${c}</span><p><b>연속 저성과 판정</b> <span class="badge b-rep">2년 연속</span><br><span style="color:var(--ink-2);font-size:12.5px">전년 권고 이행에도 등급이 회복되지 않았거나 이행이 없었음을 의미. 이행조치의 실효성 검토 필요.</span></p></div>`);
+  if(repItems.length) repHtml = `<div class="rep">${repItems.join('')}</div>`;
+  else if(Object.keys(p.findings).length>=2) repHtml = `<div class="empty">수합된 ${Object.keys(p.findings).join('·')}년 지적 간 동일 주제의 반복은 탐지되지 않음(문자 2-gram 유사도 0.28 미만, 공통 핵심어 없음).</div>`;
+  else repHtml = `<div class="empty"><b>판정 불가.</b> 저성과 연도 ${lows.length}회 중 지적 원문이 수합된 연도가 ${Object.keys(p.findings).length}개로, 연도 간 대비가 성립하지 않음. ${lows.length>=2?`등급 이력상 ${lows.join('·')}년에 저성과가 반복되어 지적 주제의 동일성 확인이 우선 과제.`:''}</div>`;
+
+  document.getElementById('card').innerHTML = `
+  <header class="head">
+    <div><div class="eyebrow">중소기업 지원사업 성과평가 · 계속평가 사업 평가이력카드</div>
+      <h1>${esc(p.name)}<small>${esc(p.ministry)} · ${esc(p.fund)} · 세부사업 ${esc(p.id)} · 예산서 ${esc(p.budget_code||'-')}</small></h1></div>
+    <div class="stamp">2027년도 평가용 (’26년 실적)<b>HIST-${esc(p.id)}-2027</b>작성 2026.10.25 · 수합본 ’26.10.23 기준</div>
+  </header>
+
+  <section>
+    <h2><span class="n">1</span>사업 개요</h2>
+    <dl class="meta">
+      <div><dt>소관 부처</dt><dd>${esc(p.ministry)}</dd></div>
+      <div><dt>회계·기금</dt><dd>${esc(p.fund)}</dd></div>
+      <div><dt>사업 기간</dt><dd class="mono">${esc(p.start||'-')} ~ ${esc(p.end||'-')}</dd></div>
+      <div><dt>현행 평가 분야</dt><dd>${esc(fieldNow)}${fieldHist.length>1?` <span class="note">(이전 ${esc(fieldHist.slice(0,-1).join('·'))})</span>`:''}</dd></div>
+      <div><dt>평가 참여</dt><dd class="mono">${evalYears.length}회 / ${YEARS.length}년</dd></div>
+      <div><dt>첫 저성과 연도</dt><dd class="mono">${lows.length?lows[0]:'-'}${p.first_low && String(p.first_low)<Y0?` <span class="note">(’${String(p.first_low).slice(2)} 표시 범위 외)</span>`:''}</dd></div>
+      <div><dt>저성과 판정</dt><dd class="mono">${lows.length}회${lastLow?` (최근 ${lastLow})`:''}</dd></div>
+      <div><dt>비고</dt><dd>${esc(p.exclude||'해당 없음')}</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span>등급 추이 ${Y0}~${Y1}<span class="hint">미흡(~’21)·개선필요(’22~)는 동일 저성과 등급</span></h2>
+    <div class="trend"><table>
+      <thead><tr><th class="row">평가연도</th>${YEARS.map(y=>`<th>${y}</th>`).join('')}</tr></thead>
+      <tbody>
+        <tr><td class="row">중소기업 지원사업 성과평가</td>${YEARS.map(y=>`<td>${chip(p.grade[y])}</td>`).join('')}</tr>
+        <tr><td class="row field">평가 분야</td>${YEARS.map(y=>`<td class="field">${esc(p.field[y]||'·')}</td>`).join('')}</tr>
+        ${fiscalRows(p)}
+      </tbody></table></div>
+    <div class="kpis">
+      <div class="kpi ${lows.length?'alert':''}"><b>${lows.length}회</b><span>저성과 판정(미흡·개선필요)</span></div>
+      <div class="kpi ${cons.length?'alert':''}"><b>${cons.length?cons.join(', '):'없음'}</b><span>연속 저성과</span></div>
+      <div class="kpi ${lows.some(y=>hwpYears.includes(y)) && !realA.length ? 'alert':''}"><b>${realA.length}건</b><span>이행조치 회신 연도</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span>전년도 권고 ↔ 금년도 이행실적 대비<span class="hint">중소기업 지원사업 성과평가 · 저성과 연도별</span></h2>
+    ${hasSample?`<div class="banner"><b>예시 데이터 안내.</b> ${esc(p.sample_note||'아래 지적·권고·이행조치 중 예시 표식 항목은 서식 시연용 가상 문안으로, 실제 평가보고서 원문과 부처 회신으로 교체해야 함.')}</div>`:''}
+    ${pairs}
+  </section>
+
+  <section>
+    <h2><span class="n">4</span>타 재정사업평가 종합의견·권고<span class="hint">열린재정 미공개 평가보고서 원문 · 본 평가 지적과의 교차 여부는 5절</span></h2>
+    ${otherHtml}
+  </section>
+
+  <section>
+    <h2><span class="n">5</span>반복 지적·미개선 사항<span class="hint">본 평가 연도 간 반복 · 타 제도 권고와의 교차</span></h2>
+    ${repHtml}
+  </section>`;
+}
+
+// ---- 사업 선택
+const sel = document.getElementById('pick');
+const sorted = [...D.programs].sort((a,b)=> (a.ministry===b.ministry ? a.name.localeCompare(b.name,'ko') : a.ministry.localeCompare(b.ministry,'ko')));
+for(const p of sorted){
+  const o = document.createElement('option'); o.value = p.id;
+  const tag = '';
+  o.textContent = `${p.ministry} · ${p.name}${tag}`; sel.appendChild(o);
+}
+const SAMPLE = D.programs.some(x=>x.id==='3612300') ? '3612300' : D.programs[0].id; // 기본: 중소벤처기업부 마케팅지원사업
+if(D.single){ document.querySelector('.toolbar label').style.display='none'; document.getElementById('idx').style.display='none'; }   // 단일 사업 카드(--only)
+function pickFromHash(){ const m=/^#p(\d+)$/.exec(location.hash); return m && D.programs.some(p=>p.id===m[1]) ? m[1] : null; }
+function show(id){ const p = D.programs.find(x=>x.id===id) || D.programs.find(x=>x.id===SAMPLE); sel.value=p.id; render(p); try{ history.replaceState(null,'','#p'+p.id);}catch(e){} }
+sel.addEventListener('change', e=>show(e.target.value));
+show(pickFromHash() || SAMPLE);
+</script>

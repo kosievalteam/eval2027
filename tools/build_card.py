@@ -38,5 +38,7 @@ for f in args[3:]:
 slim = {'years': [str(y) for y in D['years']], 'programs': D['programs'], 'fiscal_meta': D.get('fiscal_meta'), 'fiscal_rows': D.get('fiscal_rows'), 'coverage': D.get('coverage'), 'jobs_meta': D.get('jobs_meta'), 'single': bool(only)}   # hwp 원표(raw)는 카드에 불필요
 js = json.dumps(slim, ensure_ascii=False, separators=(',', ':')).replace('</', '<' + chr(92) + '/')
 html = open(tpl, encoding='utf-8').read().replace('__DATA__', js)
+if only:
+    html = html.replace('<title>평가이력카드</title>', f"<title>{D['programs'][0]['name']} 평가이력카드</title>", 1)   # 단일 카드 제목
 open(out, 'w', encoding='utf-8').write(html)
 print(out, len(html.encode()) // 1024, 'KB')
